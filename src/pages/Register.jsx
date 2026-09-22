@@ -188,6 +188,7 @@ function Register() {
 
   return (
     <>
+    <div className="background-image"></div>
       <main className="signin-page">
         <HeroAuthForm isStudent={selectedRole} />
         <section className="signin-section">
