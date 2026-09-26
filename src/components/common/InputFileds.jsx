@@ -1,4 +1,5 @@
 import EyeButton from "./EyeButton";
+
 function InputFileds({
   label,
   name,
@@ -10,12 +11,17 @@ function InputFileds({
   error,
   ifPassword,
   setPassword,
+  disabled = false,
 }) {
   return (
     <>
       <div className="form-group animate-element delay-300">
         <label htmlFor={name}>{label}</label>
-        <div className={`glass-input-wrapper ${error ? "has-error" : ""}`}>
+        <div
+          className={`glass-input-wrapper ${error ? "has-error" : ""} ${
+            disabled ? "is-disabled" : ""
+          }`}
+        >
           {icon}
           <input
             id={name}
@@ -27,6 +33,7 @@ function InputFileds({
             value={value}
             onChange={onChange}
             autoComplete={name}
+            disabled={disabled}
           />
         </div>
         {type === "password" ? (

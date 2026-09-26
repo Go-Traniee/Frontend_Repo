@@ -1,9 +1,9 @@
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 /**
- * دالة تسجيل الدخول وإرسال البيانات للـ API
- * @param {Object} credentials - تحتوي على email و password
- * @returns {Promise<Object>} البيانات القادمة من السيرفر
+  دالة تسجيل الدخول وإرسال البيانات للـ API
+  @param {Object} credentials 
+  @returns {Promise<Object>} 
  */
 export const login = async (credentials) => {
   try {
@@ -35,8 +35,8 @@ export const login = async (credentials) => {
 
 /**
  * دالة تسجيل حساب جديد (طالب أو مؤسسة) وإرسال البيانات للـ API
- * @param {Object} formData - بيانات الفورم (تحتوي على role جاهزة بصيغة "student" أو "organization")
- * @returns {Promise<Object>} البيانات القادمة من السيرفر
+  @param {Object} formData 
+  @returns {Promise<Object>}
  */
 export const register = async (formData) => {
   try {

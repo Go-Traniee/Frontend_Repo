@@ -1,4 +1,3 @@
-Authform · CSS
 /* ================================
    Base
 ================================ */
@@ -13,7 +12,8 @@ Authform · CSS
   --radius-lg: 12px;
   --radius-xl: 24px;
   --error: #ef4444;
-  --form-gap: 16px; /*المسافة بين الحقول ) */
+  --form-gap: 16px;
+  /*المسافة بين الحقول ) */
   --input-h: 46px;
   --btn-h: 48px;
 }
@@ -59,6 +59,7 @@ input {
   border: 1px solid #eee;
   border-radius: 24px;
 }
+
 /* Left column */
 .signin-section {
   flex-basis: 46%;
@@ -105,7 +106,7 @@ input {
   display: flex;
   flex-direction: column;
   gap: var(--form-gap);
-  width: 105%;
+  width: 100%;
 }
 
 .form-group {
@@ -120,14 +121,17 @@ input {
   font-size: 12px;
   font-weight: 700;
 }
+
 .select-container label {
   display: flex;
   align-items: center;
   gap: 3px;
 }
+
 .select-container label svg {
   font-size: 23px;
 }
+
 .glass-input-wrapper {
   position: relative;
   border: 1px solid #dfe5ee;
@@ -158,6 +162,30 @@ input {
   padding: 0 16px;
   padding-right: 35px;
   border-radius: 14px;
+}
+
+/* textarea*/
+.glass-input-wrapper textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid transparent;
+  outline: none;
+  background: transparent;
+  color: var(--foreground);
+  font-size: 14px;
+  font-family: inherit;
+  padding: 14px 16px;
+  padding-right: 35px;
+  border-radius: 14px;
+  resize: vertical;
+}
+
+.glass-input-wrapper textarea::placeholder {
+  color: rgba(100, 116, 139, 0.5);
+}
+
+.glass-input-wrapper.textarea-wrapper {
+  height: auto;
 }
 
 .glass-input-wrapper input::placeholder {
@@ -204,24 +232,28 @@ select.glass-input-wrapper {
   font-size: 14px;
   color: #94a3b8;
 }
+
 option {
   color: #333;
 }
+
 .select-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+
 .select-container div {
   display: grid;
 }
+
 .orga {
   grid-template-columns: 1fr;
 }
-/* الحاوية الرئيسية (الخلفية الرمادية الفاتحة) */
+
 .role-toggle-container {
   display: flex;
-  background-color: #e2e8f0; /* لون الخلفية بناءً على الصورة */
+  background-color: #e2e8f0;
   border-radius: 8px;
   padding: 8px;
   gap: 8px;
@@ -234,13 +266,15 @@ option {
 
 /* تصميم الزر الافتراضي (الغير نشط) */
 .role-label {
-  flex: 1; /* ليأخذ كل زر 50% من المساحة */
+  flex: 1;
+  /* ليأخذ كل زر 50% من المساحة */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* المسافة بين الأيقونة والنص */
+  gap: 8px;
+  /* المسافة بين الأيقونة والنص */
   padding: 6px 16px;
-  color: #64748b; /* لون النص والأيقونة الرصاصي */
+  color: #64748b;
   font-size: 14px;
   font-family: inherit;
   font-weight: 600;
@@ -252,17 +286,13 @@ option {
 .role-icon {
   font-size: 18px;
 }
-
-/* 
-  التصميم عند التحديد (Active State)
-  عندما يكون الإدخال المخفي checked، سيتم تطبيق هذا التنسيق على الـ label الذي يليه 
-*/
-.hidden-radio:checked + .role-label {
-  background-color: #0b1b42; /* اللون الكحلي الغامق كما في الصورة */
-  color: #ffffff; /* تغيير لون النص والأيقونة للأبيض */
+.hidden-radio:checked+.role-label {
+  background-color: #0b1b42;
+  color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-weight: bold;
 }
+
 .form-options {
   display: flex;
   align-items: center;
@@ -270,11 +300,13 @@ option {
   gap: 12px;
   font-size: 14px;
 }
+
 .form-options a {
   color: #152f52;
   font-weight: 700;
   text-decoration: none;
 }
+
 .form-options a:hover {
   text-decoration: underline;
 }
@@ -293,6 +325,7 @@ option {
   margin: 0;
   accent-color: var(--main-color);
 }
+
 .remember-label span {
   color: #64748b;
   font-size: 11px;
@@ -346,6 +379,7 @@ option {
 .input-wrapper.has-error .input-icon {
   color: var(--error);
 }
+
 .input-icon {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -393,7 +427,7 @@ option {
    Google button
 ================================ */
 .google-button {
-  width: 105%;
+  width: 100%;
   height: var(--btn-h);
   display: flex;
   align-items: center;
@@ -431,7 +465,7 @@ option {
   color: var(--muted-foreground);
   font-size: 12px;
   text-align: center;
-  width: 105%;
+  width: 100%;
 }
 
 /* ================================
@@ -456,12 +490,15 @@ option {
   opacity: 0;
   animation: slideRightIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 300ms forwards;
 }
+
 .student-image {
   background-image: url("./assets/student_register.png");
 }
+
 .orga-image {
   background-image: url("./assets/organization_register.jpg");
 }
+
 .login-image {
   background-image: url("./assets/login_hero_image.jpg");
 }
@@ -669,15 +706,12 @@ option {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .signin-section {
+    flex-basis: 100%;
     padding: 24px;
   }
 
   .hero-section {
-    padding: 16px;
-  }
-
-  .hero-image {
-    inset: 16px;
+    display: none;
   }
 
   .testimonials {
@@ -716,9 +750,6 @@ option {
   }
 }
 
-/* ============================================================
-   الويب فقط (768px وأكبر): الصفحة على قد الشاشة بدون سكرول
-============================================================ */
 @media (min-width: 768px) {
   :root {
     --form-gap: clamp(6px, 1.8vh, 16px);
@@ -745,6 +776,7 @@ option {
     overflow-y: auto;
     scrollbar-width: none;
   }
+
   .signin-section::-webkit-scrollbar {
     display: none;
   }
@@ -772,13 +804,663 @@ option {
   :root {
     --form-gap: 10px;
   }
+
   .signin-content {
     gap: 4px;
   }
+
   .create-account {
     margin-top: 8px;
   }
+
   .role-toggle-container {
     padding: 4px;
   }
+}/* ================================
+   Disabled Input (Locked fields)
+================================ */
+.glass-input-wrapper.is-disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.glass-input-wrapper.is-disabled input {
+  cursor: not-allowed;
+  color: #64748b;
+}
+
+/* ================================
+   Step Indicator
+================================ */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.step-indicator-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.step-circle-active,
+.step-circle-done {
+  background: #152f52;
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.step-label-active {
+  color: #152f52;
+}
+
+.step-connector {
+  width: 40px;
+  height: 1px;
+  background: #cbd5e1;
+  flex: 0 0 auto;
+}
+
+/* ================================
+   Profile Hero Image
+================================ */
+.profile-image {
+  background-image: url("./assets/student_profile.png");
+}
+
+.profile-image-step2 {
+  background-image: url("./assets/student_profile2.png");
+}
+.profile-step-title {
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 42px;
+  letter-spacing: -0.75px;
+  text-align: right;
+  color: #0f172a;
+  margin: 0;
+}
+.profile-logo {
+  display: block;
+  width: 130px;
+  height: auto;
+  margin: 0 auto 50px;
+}
+
+html:has(.profile-logo),
+body:has(.profile-logo) {
+  height: auto;
+  overflow: visible;
+  direction: ltr;
+}
+
+/* الصفحة نفسها */
+.signin-page:has(.profile-logo) {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: calc(100vh - 110px);
+  min-height: calc(100dvh - 110px);
+
+  margin: 55px 0;
+  padding: 0 56px;
+
+  display: flex;
+  flex-direction: row-reverse; 
+  direction: rtl;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+/* ============================================================
+   LEFT SIDE - PROFILE FORM
+============================================================ */
+
+.signin-page:has(.profile-logo) .signin-section {
+  flex: 0 0 58%;
+  min-width: 0;
+
+  padding: 32px 55px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  overflow: visible;
+}
+.signin-page:has(.profile-logo):not(:has(.hero-section)) .signin-section {
+  flex: 1 1 100%;
+}
+.signin-page:has(.profile-logo) .signin-container {
+  width: 100%;
+  max-width: 520px;
+
+  margin: 0;
+}
+/* المحتوى */
+.signin-page:has(.profile-logo) .signin-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+/*
+   LOGO*/
+
+.signin-page:has(.profile-logo) .profile-logo {
+  display: block;
+
+  width: 76px;
+  height: auto;
+  margin: 0 auto 34px;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.signin-page:has(.profile-logo) .step-indicator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 28px;
+}
+/* الدائرة */
+.signin-page:has(.profile-logo) .step-circle {
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  background: #cbd5e1;
+  color: #ffffff;
+}
+
+
+/* الدائرة الحالية */
+.signin-page:has(.profile-logo) .step-circle-active {
+  background: #152f52;
+}
+
+.signin-page:has(.profile-logo) .step-circle-done {
+  background: #10b981;
+}
+
+.signin-page:has(.profile-logo) .step-label-done {
+  color: #152f52;
+  font-weight: 700;
+}
+.signin-page:has(.profile-logo) .step-label {
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #a3adbd;
+}
+.signin-page:has(.profile-logo) .step-label-active {
+  color: #152f52;
+  font-weight: 700;
+}
+.signin-page:has(.profile-logo) .step-label.step-label-done {
+  color: #152f52;
+  font-weight: 700;
+}
+.signin-page:has(.profile-logo) .step-connector {
+  width: 38px;
+  height: 1px;
+  background: #cbd5e1;
+}
+
+.signin-page:has(.profile-logo) .step-connector.step-connector-done {
+  background: #10b981;
+}
+/* 
+   PROFILE TITLE
+ */
+.signin-page:has(.profile-logo) .profile-step-title {
+  width: 100%;
+
+  margin: 0 0 25px;
+
+  font-family: "Cairo", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 42px;
+  letter-spacing: -0.75px;
+
+  text-align: right;
+  vertical-align: middle;
+
+  color: #0f172a;
+}
+.signin-page:has(.profile-logo) .profile-step-title span {
+  font-family: "Cairo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 42px;
+  letter-spacing: -0.75px;
+  text-align: right;
+  vertical-align: middle;
+}
+/* 
+   FORM*/
+.signin-page:has(.profile-logo) .signin-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.signin-page:has(.profile-logo) .form-group {
+  width: 100%;
+}
+.signin-page:has(.profile-logo) .form-group label,
+.signin-page:has(.profile-logo) .select-container label {
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  text-align: right;
+}
+/* الحقل */
+.signin-page:has(.profile-logo) .glass-input-wrapper {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* الحقل المعطل */
+.signin-page:has(.profile-logo) .glass-input-wrapper.is-disabled {
+  background: #f1f5f9;
+
+  border-color: #e2e8f0;
+}
+/* input */
+.signin-page:has(.profile-logo) .glass-input-wrapper input {
+  height: 40px;
+  padding: 0 14px;
+  padding-right: 38px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #475569;
+  text-align: right;
+}
+/* placeholder */
+.signin-page:has(.profile-logo)
+  .glass-input-wrapper
+  input::placeholder {
+  color: #a8b1bf;
+}
+
+/* textarea */
+.signin-page:has(.profile-logo) .glass-input-wrapper.textarea-wrapper {
+  height: auto;
+  min-height: 96px;
+  align-items: flex-start;
+}
+
+.signin-page:has(.profile-logo) .glass-input-wrapper textarea {
+  min-height: 90px;
+  padding: 10px 14px;
+  padding-right: 38px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #475569;
+  text-align: right;
+}
+
+.signin-page:has(.profile-logo)
+  .glass-input-wrapper
+  textarea::placeholder {
+  color: #a8b1bf;
+}
+.signin-page:has(.profile-logo) .select-field-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+}
+
+.signin-page:has(.profile-logo) .select-field-wrapper .input-icon {
+  position: static;
+  transform: none;
+  flex: 0 0 auto;
+}
+
+.signin-page:has(.profile-logo) .select-field-wrapper select {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 40px;
+  border: 1px solid transparent;
+  outline: none;
+  background: transparent;
+  appearance: auto;
+  padding: 0;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #475569;
+  text-align: right;
+}
+
+.signin-page:has(.profile-logo) .select-field-wrapper select:invalid {
+  color: #a8b1bf;
+}
+
+.signin-page:has(.profile-logo)
+  .glass-input-wrapper:focus-within {
+  border-color: #9bb4d2;
+
+  background: #ffffff;
+
+  box-shadow: 0 0 0 2px rgba(21, 47, 82, 0.06);
+}
+
+
+
+
+.signin-page:has(.profile-logo) .input-icon {
+  right: 12px;
+  left: auto;
+
+  font-size: 16px;
+
+  color: #94a3b8;
+}
+
+
+.signin-page:has(.profile-logo) .signin-button {
+  width: 50%;
+  height: 40px;
+
+  margin-top: 7px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #152f52;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 5px 14px rgba(21, 47, 82, 0.18);
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.signin-page:has(.profile-logo) .signin-button:hover {
+  opacity: 1;
+
+  background: #0f2747;
+
+  box-shadow: 0 7px 18px rgba(21, 47, 82, 0.22);
+}
+.signin-page:has(.profile-logo) .signin-button:active {
+  transform: translateY(1px);
+}
+.signin-page:has(.profile-logo) .error-message {
+  margin-top: 3px;
+  margin-left: 0;
+  font-size: 9px;
+  text-align: right;
+}
+.signin-page:has(.profile-logo) .hero-section {
+  flex: 0 0 42%;
+
+  min-width: 0;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  overflow: hidden;
+}
+.signin-page:has(.profile-logo) .hero-image.profile-image,
+.signin-page:has(.profile-logo) .hero-image.profile-image-step2 {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  inset: auto;
+  border-radius: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: none;
+  opacity: 1;
+  animation-name: slideLeftIn;
+}
+
+/* الخلفية */
+body:has(.profile-logo) .background-image {
+  background-image: radial-gradient(60% 91% at -4% 9%, #92C3FF 7%, #FFFFFF 65%);
+  filter: none;
+  opacity: 1;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes slideLeftIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+.signin-page:has(.profile-logo) .skills-field {
+  position: relative;
+}
+.signin-page:has(.profile-logo) .skills-wrapper {
+  min-height: 42px;
+  height: auto;
+  padding: 6px 10px;
+  cursor: text;
+}
+
+.signin-page:has(.profile-logo) .skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.signin-page:has(.profile-logo) .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #152f52;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.signin-page:has(.profile-logo) .skill-tag button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+}
+
+.signin-page:has(.profile-logo) .skill-tag button:hover {
+  color: #ef4444;
+}
+
+.signin-page:has(.profile-logo) .skills-tags input {
+  flex: 1 1 120px;
+  min-width: 100px;
+  height: 28px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 11px;
+  color: #475569;
+  text-align: right;
+  padding: 0 4px;
+}
+
+.signin-page:has(.profile-logo) .skills-dropdown {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+
+  max-height: 220px;
+  overflow-y: auto;
+
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+}
+
+.signin-page:has(.profile-logo) .skills-dropdown li {
+  padding: 8px 10px;
+  font-size: 11px;
+  color: #334155;
+  text-align: right;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.signin-page:has(.profile-logo) .skills-dropdown li:hover {
+  background: #f1f5f9;
+}
+
+.signin-page:has(.profile-logo) .skills-dropdown-empty {
+  color: #94a3b8;
+  cursor: default;
+}
+
+.signin-page:has(.profile-logo) .skills-dropdown-empty:hover {
+  background: transparent;
+}
+.signin-page:has(.profile-logo) .form-step-actions {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  justify-content: flex-end;
+}
+.signin-page:has(.profile-logo) .form-step-actions:has(.prev-button) {
+  justify-content: space-between;
+}
+
+.signin-page:has(.profile-logo) .next-button {
+  width: fit-content;
+  height: 48px;
+  min-width: 210px;
+  padding: 0 35.68px;
+  border-radius: 8px;
+  gap: 4px;
+  background: #021853;
+}
+
+.signin-page:has(.profile-logo) .prev-button {
+  width: fit-content;
+  height: 48px;
+  min-width: 210px;
+  padding: 0 35.68px;
+  border-radius: 8px;
+  gap: 4px;
+
+  background: #ffffff;
+  color: #152f52;
+  border: 1.5px solid #152f52;
+  box-shadow: none;
+}
+.signin-page:has(.profile-logo) .phone-field-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.signin-page:has(.profile-logo) .phone-number-wrapper {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.signin-page:has(.profile-logo) .phone-code-wrapper {
+  flex: 0 0 92px;
+  width: 92px;
+}
+.signin-page:has(.profile-logo) .phone-code-wrapper select {
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  outline: none;
+  background: transparent;
+  appearance: auto;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #475569;
+  text-align: center;
+}
+.signin-page:has(.profile-logo) .phone-field-row.has-error .glass-input-wrapper {
+  border-color: var(--error);
 }

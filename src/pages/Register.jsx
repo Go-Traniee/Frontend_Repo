@@ -190,7 +190,7 @@ function Register() {
     <>
     <div className="background-image"></div>
       <main className="signin-page">
-        <HeroAuthForm isStudent={selectedRole} />
+       <HeroAuthForm isStudent={selectedRole} mirrored={true} />
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
