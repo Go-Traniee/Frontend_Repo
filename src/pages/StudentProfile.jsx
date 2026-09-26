@@ -142,14 +142,13 @@ function StudentProfile() {
     const newErrors = {};
 
     if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
-    if (!formData.academic_major) newErrors.academic_major = "التخصص الجامعي مطلوب";
-    if (!formData.graduation_year) newErrors.graduation_year = "سنة التخرج مطلوبة";
-
-    if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
+    else if (!formData.academic_major)
+      newErrors.academic_major = "التخصص الجامعي مطلوب";
+    else if (!formData.graduation_year)
+      newErrors.graduation_year = "سنة التخرج مطلوبة";
+    else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
       newErrors.phone = "رقم الهاتف غير صحيح";
-    }
-
-    if (selectedSkills.length === 0) {
+    } else if (selectedSkills.length === 0) {
       newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
     }
 
@@ -165,21 +164,21 @@ function StudentProfile() {
         university: formData.university,
         academic_major: formData.academic_major,
         graduation_year: formData.graduation_year,
-        phone: formData.phone
-          ? `${formData.phone_code}${formData.phone}`
-          : "",
+        phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
       });
 
       await Promise.all(
         selectedSkills.map((skill) =>
-          addStudentSkill({ skill_id: skill.id, proficiency: "beginner" })
-        )
+          addStudentSkill({ skill_id: skill.id, proficiency: "beginner" }),
+        ),
       );
 
       navigate("/");
     } catch (error) {
       console.log("فشل حفظ البيانات", error);
-      setErrorMsg({ submit: error.message || "حدث خطأ أثناء الحفظ، حاول مرة أخرى" });
+      setErrorMsg({
+        submit: error.message || "حدث خطأ أثناء الحفظ، حاول مرة أخرى",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -190,6 +189,8 @@ function StudentProfile() {
       <div className="background-image"></div>
 
       <main className="signin-page">
+        <HeroAuthForm isProfile={true} currentStep={currentStep} />
+
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
@@ -322,8 +323,6 @@ function StudentProfile() {
             </div>
           </div>
         </section>
-
-        <HeroAuthForm isProfile={true} currentStep={currentStep} />
       </main>
     </>
   );

@@ -286,7 +286,7 @@ option {
 .role-icon {
   font-size: 18px;
 }
-.hidden-radio:checked+.role-label {
+.hidden-radio:checked + .role-label {
   background-color: #0b1b42;
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -816,7 +816,7 @@ option {
   .role-toggle-container {
     padding: 4px;
   }
-}/* ================================
+} /* ================================
    Disabled Input (Locked fields)
 ================================ */
 .glass-input-wrapper.is-disabled {
@@ -935,7 +935,7 @@ body:has(.profile-logo) {
   padding: 0 56px;
 
   display: flex;
-  flex-direction: row-reverse; 
+  flex-direction: row-reverse;
   direction: rtl;
   background: transparent;
   border: none;
@@ -1005,7 +1005,6 @@ body:has(.profile-logo) {
   background: #cbd5e1;
   color: #ffffff;
 }
-
 
 /* الدائرة الحالية */
 .signin-page:has(.profile-logo) .step-circle-active {
@@ -1105,7 +1104,6 @@ body:has(.profile-logo) {
     box-shadow 0.2s ease;
 }
 
-
 /* الحقل المعطل */
 .signin-page:has(.profile-logo) .glass-input-wrapper.is-disabled {
   background: #f1f5f9;
@@ -1118,14 +1116,11 @@ body:has(.profile-logo) {
   padding: 0 14px;
   padding-right: 38px;
   border-radius: 10px;
-  font-size: 11px;
   color: #475569;
   text-align: right;
 }
 /* placeholder */
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper
-  input::placeholder {
+.signin-page:has(.profile-logo) .glass-input-wrapper input::placeholder {
   color: #a8b1bf;
 }
 
@@ -1146,9 +1141,7 @@ body:has(.profile-logo) {
   text-align: right;
 }
 
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper
-  textarea::placeholder {
+.signin-page:has(.profile-logo) .glass-input-wrapper textarea::placeholder {
   color: #a8b1bf;
 }
 .signin-page:has(.profile-logo) .select-field-wrapper {
@@ -1174,7 +1167,7 @@ body:has(.profile-logo) {
   appearance: auto;
   padding: 0;
   border-radius: 10px;
-  font-size: 11px;
+  font-size: 14px;
   color: #475569;
   text-align: right;
 }
@@ -1183,17 +1176,13 @@ body:has(.profile-logo) {
   color: #a8b1bf;
 }
 
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper:focus-within {
+.signin-page:has(.profile-logo) .glass-input-wrapper:focus-within {
   border-color: #9bb4d2;
 
   background: #ffffff;
 
   box-shadow: 0 0 0 2px rgba(21, 47, 82, 0.06);
 }
-
-
-
 
 .signin-page:has(.profile-logo) .input-icon {
   right: 12px;
@@ -1203,7 +1192,6 @@ body:has(.profile-logo) {
 
   color: #94a3b8;
 }
-
 
 .signin-page:has(.profile-logo) .signin-button {
   width: 50%;
@@ -1228,7 +1216,6 @@ body:has(.profile-logo) {
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-
 
 .signin-page:has(.profile-logo) .signin-button:hover {
   opacity: 1;
@@ -1276,7 +1263,11 @@ body:has(.profile-logo) {
 
 /* الخلفية */
 body:has(.profile-logo) .background-image {
-  background-image: radial-gradient(60% 91% at -4% 9%, #92C3FF 7%, #FFFFFF 65%);
+  background-image: radial-gradient(
+    60% 91% at 104% 9%,
+    #92c3ff 7%,
+    #ffffff 65%
+  );
   filter: none;
   opacity: 1;
   position: fixed;
@@ -1461,6 +1452,8 @@ body:has(.profile-logo) .background-image {
   color: #475569;
   text-align: center;
 }
-.signin-page:has(.profile-logo) .phone-field-row.has-error .glass-input-wrapper {
+.signin-page:has(.profile-logo)
+  .phone-field-row.has-error
+  .glass-input-wrapper {
   border-color: var(--error);
 }
