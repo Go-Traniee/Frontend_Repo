@@ -22,6 +22,7 @@ import logo from "../assets/logo.svg";
 import {
   UNIVERSITIES,
   ACADEMIC_MAJORS,
+  SPECIFIC_MAJOR,
   getGraduationYears,
 } from "../constants/academicOptions";
 
@@ -53,6 +54,7 @@ function StudentProfile() {
     name: "",
     university: "",
     academic_major: "",
+    specific_major: "",
     graduation_year: "",
     phone: "",
     phone_code: "+970",
@@ -73,6 +75,7 @@ function StudentProfile() {
           name: data.name || "",
           university: data.university || "",
           academic_major: data.academic_major || "",
+          specific_major: data.specific_major || "",
           graduation_year: data.graduation_year || "",
           phone_code,
           phone,
@@ -144,6 +147,8 @@ function StudentProfile() {
     if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
     else if (!formData.academic_major)
       newErrors.academic_major = "التخصص الجامعي مطلوب";
+    else if (!formData.specific_major)
+      newErrors.specific_major = "التخصص المهاري مطلوب";
     else if (!formData.graduation_year)
       newErrors.graduation_year = "سنة التخرج مطلوبة";
     else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
@@ -188,7 +193,9 @@ function StudentProfile() {
     <>
       <div className="background-image"></div>
 
-      <main className="signin-page">
+      <main
+        className={`signin-page ${currentStep === 1 ? "" : "resize-height"}`}
+      >
         <HeroAuthForm isProfile={true} currentStep={currentStep} />
 
         <section className="signin-section">
@@ -258,16 +265,29 @@ function StudentProfile() {
                     placeholder="اختر جامعتك أو كليتك"
                   />
 
-                  <SelectField
-                    label="التخصص الجامعي"
-                    icon={<FaGraduationCap className="input-icon" />}
-                    name="academic_major"
-                    value={formData.academic_major}
-                    onChange={handleChange}
-                    options={ACADEMIC_MAJORS}
-                    error={errorMsg.academic_major}
-                    placeholder="اختر تخصصك الجامعي"
-                  />
+                  <div className="major">
+                    {" "}
+                    <SelectField
+                      label="التخصص الجامعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="academic_major"
+                      value={formData.academic_major}
+                      onChange={handleChange}
+                      options={ACADEMIC_MAJORS}
+                      error={errorMsg.academic_major}
+                      placeholder="اختر تخصصك الجامعي"
+                    />
+                    <SelectField
+                      label="التخصص الفرعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="specific_major"
+                      value={formData.specific_major}
+                      onChange={handleChange}
+                      options={SPECIFIC_MAJOR}
+                      error={errorMsg.specific_major}
+                      placeholder="اختر التخصص الذي تتقنه"
+                    />
+                  </div>
 
                   <SelectField
                     label="سنة التخرج / المتوقعة"

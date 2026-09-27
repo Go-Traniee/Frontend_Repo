@@ -1422,6 +1422,9 @@ body:has(.profile-logo) .background-image {
   border: 1.5px solid #152f52;
   box-shadow: none;
 }
+.signin-page:has(.profile-logo) .prev-button:hover {
+  background-color: #0f27472e;
+}
 .signin-page:has(.profile-logo) .phone-field-row {
   display: flex;
   align-items: stretch;
@@ -1456,4 +1459,15 @@ body:has(.profile-logo) .background-image {
   .phone-field-row.has-error
   .glass-input-wrapper {
   border-color: var(--error);
+}
+
+.major {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.resize-height {
+  margin: 0 !important;
+  margin-top: -10px !important;
 }
