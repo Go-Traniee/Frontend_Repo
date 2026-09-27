@@ -935,7 +935,7 @@ body:has(.profile-logo) {
   padding: 0 56px;
 
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   direction: rtl;
   background: transparent;
   border: none;
@@ -958,6 +958,7 @@ body:has(.profile-logo) {
   justify-content: center;
 
   overflow: visible;
+  order: 2;
 }
 .signin-page:has(.profile-logo):not(:has(.hero-section)) .signin-section {
   flex: 1 1 100%;
@@ -1002,23 +1003,13 @@ body:has(.profile-logo) {
   width: 20px;
   height: 20px;
   font-size: 10px;
-  background: #cbd5e1;
-  color: #ffffff;
 }
 
 /* الدائرة الحالية */
-.signin-page:has(.profile-logo) .step-circle-active {
-  background: #152f52;
-}
-
 .signin-page:has(.profile-logo) .step-circle-done {
   background: #10b981;
 }
 
-.signin-page:has(.profile-logo) .step-label-done {
-  color: #152f52;
-  font-weight: 700;
-}
 .signin-page:has(.profile-logo) .step-label {
   font-size: 11px;
   font-weight: 600;
@@ -1106,8 +1097,6 @@ body:has(.profile-logo) {
 
 /* الحقل المعطل */
 .signin-page:has(.profile-logo) .glass-input-wrapper.is-disabled {
-  background: #f1f5f9;
-
   border-color: #e2e8f0;
 }
 /* input */
@@ -1202,15 +1191,10 @@ body:has(.profile-logo) {
   border: none;
   border-radius: 12px;
 
-  background: #152f52;
-  color: #ffffff;
-
   font-size: 12px;
-  font-weight: 700;
 
   box-shadow: 0 5px 14px rgba(21, 47, 82, 0.18);
 
-  cursor: pointer;
   transition:
     background 0.2s ease,
     transform 0.2s ease,
@@ -1245,6 +1229,7 @@ body:has(.profile-logo) {
   justify-content: center;
   background: transparent;
   overflow: hidden;
+  order: 1;
 }
 .signin-page:has(.profile-logo) .hero-image.profile-image,
 .signin-page:has(.profile-logo) .hero-image.profile-image-step2 {
@@ -1263,10 +1248,10 @@ body:has(.profile-logo) {
 
 /* الخلفية */
 body:has(.profile-logo) .background-image {
-  background-image: radial-gradient(
-    60% 91% at 104% 9%,
-    #92c3ff 7%,
-    #ffffff 65%
+  background-image: linear-gradient(
+    90deg,
+    rgba(146, 195, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 75%
   );
   filter: none;
   opacity: 1;
@@ -1399,16 +1384,7 @@ body:has(.profile-logo) .background-image {
   justify-content: space-between;
 }
 
-.signin-page:has(.profile-logo) .next-button {
-  width: fit-content;
-  height: 48px;
-  min-width: 210px;
-  padding: 0 35.68px;
-  border-radius: 8px;
-  gap: 4px;
-  background: #021853;
-}
-
+.signin-page:has(.profile-logo) .next-button,
 .signin-page:has(.profile-logo) .prev-button {
   width: fit-content;
   height: 48px;
@@ -1416,7 +1392,13 @@ body:has(.profile-logo) .background-image {
   padding: 0 35.68px;
   border-radius: 8px;
   gap: 4px;
+}
 
+.signin-page:has(.profile-logo) .next-button {
+  background: #021853;
+}
+
+.signin-page:has(.profile-logo) .prev-button {
   background: #ffffff;
   color: #152f52;
   border: 1.5px solid #152f52;
@@ -1470,4 +1452,160 @@ body:has(.profile-logo) .background-image {
 .resize-height {
   margin: 0 !important;
   margin-top: -10px !important;
+}
+/* ================================
+   Matching / Loading Page
+   (كل القواعد هون محصورة بـ .matching-page بس)
+================================ */
+.matching-page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* الكلام يترّكز بالنص */
+  justify-content: flex-start;
+
+  padding: 48px 72px;
+  text-align: center;
+  direction: rtl;
+
+  background:
+    /* الأشكال الصغيرة المبعثرة (دوائر ومعينات) */
+    radial-gradient(circle 5px at 8% 78%, #f6c453 0%, #f6c453 100%, transparent 100%),
+    radial-gradient(circle 4px at 28% 74%, #cbd5e1 0%, #cbd5e1 100%, transparent 100%),
+    radial-gradient(circle 6px at 62% 80%, #152f52 0%, #152f52 100%, transparent 100%),
+    radial-gradient(circle 4px at 78% 76%, #92c3ff 0%, #92c3ff 100%, transparent 100%),
+    /* التدرّج العلوي الفاتح */
+    linear-gradient(180deg, #eaf3ff 0%, #ffffff 55%);
+
+  background-repeat: no-repeat;
+}
+
+/* الموجتين بالأسفل (كريمية وزرقاء فاتحة) — خصائص مشتركة بقاعدة وحدة */
+.matching-page::before,
+.matching-page::after {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 420px;
+  border-radius: 45%;
+  z-index: 0;
+}
+
+.matching-page::before {
+  left: -10%;
+  bottom: -220px;
+  background: #fbeecb;
+}
+
+.matching-page::after {
+  left: -15%;
+  bottom: -260px;
+  background: #dceeff;
+}
+
+/* أي عنصر حقيقي جوا الصفحة لازم يطلع فوق الموجتين */
+.matching-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.matching-logo {
+  display: block;
+  width: 96px;
+  height: auto;
+
+  /* منفصل عن باقي المحتوى، ثابت بزاوية أعلى اليمين */
+  position: absolute;
+  top: 48px;
+  right: 72px;
+  margin: 0;
+}
+
+.matching-title {
+  margin: 170px 0 20px; /* مساحة فوق تعوّض غياب الشعار من التدفق الطبيعي */
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.matching-description {
+  margin: 0 0 40px;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #64748b;
+}
+
+.matching-progress {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 6px;
+  border-radius: 999px;
+  background: #dbe4f0;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.matching-progress-bar {
+  position: absolute;
+  top: 0;
+  right: 0; /* RTL: التعبئة بتبلش من اليمين */
+  height: 100%;
+  width: 55%;
+  border-radius: 999px;
+  background: #152f52;
+  animation: matchingProgressGrow 3s ease forwards;
+}
+
+@keyframes matchingProgressGrow {
+  from {
+    width: 8%;
+  }
+  to {
+    width: 92%;
+  }
+}
+
+.matching-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.matching-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f6a623;
+  flex: 0 0 auto;
+}
+
+/* ================================
+   Responsive
+================================ */
+@media (max-width: 767px) {
+  .matching-page {
+    padding: 32px 24px;
+  }
+
+  .matching-logo {
+    width: 72px;
+    top: 24px;
+    right: 24px;
+  }
+
+  .matching-title {
+    margin-top: 120px;
+  }
 }

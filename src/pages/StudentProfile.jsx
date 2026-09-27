@@ -178,7 +178,7 @@ function StudentProfile() {
         ),
       );
 
-      navigate("/");
+      navigate("/student/matching");
     } catch (error) {
       console.log("فشل حفظ البيانات", error);
       setErrorMsg({
@@ -297,7 +297,7 @@ function StudentProfile() {
                     onChange={handleChange}
                     options={getGraduationYears()}
                     error={errorMsg.graduation_year}
-                    placeholder="اختر سنة التخرج "
+                    placeholder=" سنة التخرج "
                   />
 
                   <PhoneField
