@@ -22,8 +22,10 @@ import logo from "../assets/logo.svg";
 import {
   UNIVERSITIES,
   ACADEMIC_MAJORS,
+  SPECIFIC_MAJOR,
   getGraduationYears,
 } from "../constants/academicOptions";
+
 const STEPS = ["البيانات الشخصية", "البيانات الأكاديمية والمهارات"];
 
 function splitPhone(fullPhone) {
@@ -48,15 +50,15 @@ function StudentProfile() {
   const [submitting, setSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
-  email: "",
-  name: "",
-  university: "",
-  academic_major: "",
-  specific_major: "",
-  graduation_year: "",
-  phone: "",
-  phone_code: "+970",
-});
+    email: "",
+    name: "",
+    university: "",
+    academic_major: "",
+    specific_major: "",
+    graduation_year: "",
+    phone: "",
+    phone_code: "+970",
+  });
 
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [errorMsg, setErrorMsg] = useState({});
@@ -142,16 +144,18 @@ function StudentProfile() {
 
     const newErrors = {};
 
-if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
-else if (!formData.academic_major)
-  newErrors.academic_major = "التخصص الجامعي مطلوب";
-else if (!formData.graduation_year)
-  newErrors.graduation_year = "سنة التخرج مطلوبة";
-else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
-  newErrors.phone = "رقم الهاتف غير صحيح";
-} else if (selectedSkills.length === 0) {
-  newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
-}
+    if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
+    else if (!formData.academic_major)
+      newErrors.academic_major = "التخصص الجامعي مطلوب";
+    else if (!formData.specific_major)
+      newErrors.specific_major = "التخصص المهاري مطلوب";
+    else if (!formData.graduation_year)
+      newErrors.graduation_year = "سنة التخرج مطلوبة";
+    else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
+      newErrors.phone = "رقم الهاتف غير صحيح";
+    } else if (selectedSkills.length === 0) {
+      newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
+    }
 
     setErrorMsg(newErrors);
 
@@ -165,21 +169,21 @@ else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
         university: formData.university,
         academic_major: formData.academic_major,
         graduation_year: formData.graduation_year,
-        phone: formData.phone
-          ? `${formData.phone_code}${formData.phone}`
-          : "",
+        phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
       });
 
       await Promise.all(
         selectedSkills.map((skill) =>
-          addStudentSkill({ skill_id: skill.id, proficiency: "beginner" })
-        )
+          addStudentSkill({ skill_id: skill.id, proficiency: "beginner" }),
+        ),
       );
 
       navigate("/");
     } catch (error) {
       console.log("فشل حفظ البيانات", error);
-      setErrorMsg({ submit: error.message || "حدث خطأ أثناء الحفظ، حاول مرة أخرى" });
+      setErrorMsg({
+        submit: error.message || "حدث خطأ أثناء الحفظ، حاول مرة أخرى",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -189,9 +193,11 @@ else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
     <>
       <div className="background-image"></div>
 
-     <main
-  className={`signin-page ${currentStep === 1 ? "" : "resize-height"}`}
->
+      <main
+        className={`signin-page ${currentStep === 1 ? "" : "resize-height"}`}
+      >
+        <HeroAuthForm isProfile={true} currentStep={currentStep} />
+
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
@@ -259,16 +265,29 @@ else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
                     placeholder="اختر جامعتك أو كليتك"
                   />
 
-                  <SelectField
-                    label="التخصص الجامعي"
-                    icon={<FaGraduationCap className="input-icon" />}
-                    name="academic_major"
-                    value={formData.academic_major}
-                    onChange={handleChange}
-                    options={ACADEMIC_MAJORS}
-                    error={errorMsg.academic_major}
-                    placeholder="اختر تخصصك الجامعي"
-                  />
+                  <div className="major">
+                    {" "}
+                    <SelectField
+                      label="التخصص الجامعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="academic_major"
+                      value={formData.academic_major}
+                      onChange={handleChange}
+                      options={ACADEMIC_MAJORS}
+                      error={errorMsg.academic_major}
+                      placeholder="اختر تخصصك الجامعي"
+                    />
+                    <SelectField
+                      label="التخصص الفرعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="specific_major"
+                      value={formData.specific_major}
+                      onChange={handleChange}
+                      options={SPECIFIC_MAJOR}
+                      error={errorMsg.specific_major}
+                      placeholder="اختر التخصص الذي تتقنه"
+                    />
+                  </div>
 
                   <SelectField
                     label="سنة التخرج / المتوقعة"
@@ -324,8 +343,6 @@ else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
             </div>
           </div>
         </section>
-
-        <HeroAuthForm isProfile={true} currentStep={currentStep} />
       </main>
     </>
   );

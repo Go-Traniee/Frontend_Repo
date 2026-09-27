@@ -889,7 +889,7 @@ body:has(.profile-logo) {
   margin: 55px 0;
   padding: 0 56px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   direction: rtl;
   background: transparent;
   border: none;
@@ -1160,6 +1160,10 @@ body:has(.profile-logo) {
   justify-content: center;
   background: transparent;
   overflow: hidden;
+  order: 1;
+}
+.signin-page:has(.profile-logo) .signin-section {
+  order: 2;
 }
 .signin-page:has(.profile-logo) .hero-image.profile-image,
 .signin-page:has(.profile-logo) .hero-image.profile-image-step2 {
