@@ -266,40 +266,38 @@ function StudentProfile() {
                     placeholder="اختر جامعتك أو كليتك"
                   />
 
-                  <SelectField
-                    label="التخصص الجامعي"
-                    icon={<FaGraduationCap className="input-icon" />}
-                    name="academic_major"
-                    value={formData.academic_major}
-                    onChange={handleChange}
-                    options={ACADEMIC_MAJORS}
-                    error={errorMsg.academic_major}
-                    placeholder="اختر تخصصك الجامعي"
-                  />
-
-                  <div>
+                  <div className="major">
                     <SelectField
-                      label="سنة التخرج / المتوقعة"
-                      icon={<FaCalendarAlt className="input-icon" />}
-                      name="graduation_year"
-                      value={formData.graduation_year}
+                      label="التخصص الجامعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="academic_major"
+                      value={formData.academic_major}
                       onChange={handleChange}
-                      options={getGraduationYears()}
-                      error={errorMsg.graduation_year}
-                      placeholder="اختر سنة التخرج "
+                      options={ACADEMIC_MAJORS}
+                      error={errorMsg.academic_major}
+                      placeholder="اختر تخصصك الجامعي"
                     />
                     <SelectField
-                      label="سنة التخرج / المتوقعة"
-                      icon={<FaCalendarAlt className="input-icon" />}
-                      name="graduation_year"
-                      value={formData.graduation_year}
+                      label="التخصص الفرعي"
+                      icon={<FaGraduationCap className="input-icon" />}
+                      name="specific_major"
+                      value={formData.specific_major}
                       onChange={handleChange}
-                      options={getGraduationYears()}
-                      error={errorMsg.graduation_year}
-                      placeholder="اختر سنة التخرج "
+                      options={SPECIFIC_MAJORS}
+                      error={errorMsg.specific_major}
+                      placeholder="اخترالتخصص المهاري"
                     />
                   </div>
-
+                  <SelectField
+                    label="سنة التخرج / المتوقعة"
+                    icon={<FaCalendarAlt className="input-icon" />}
+                    name="graduation_year"
+                    value={formData.graduation_year}
+                    onChange={handleChange}
+                    options={getGraduationYears()}
+                    error={errorMsg.graduation_year}
+                    placeholder="اختر سنة التخرج "
+                  />
                   <PhoneField
                     label="رقم الهاتف المحمول"
                     name="phone"
