@@ -168,6 +168,7 @@ function StudentProfile() {
         name: formData.name,
         university: formData.university,
         academic_major: formData.academic_major,
+        specific_major: formData.specific_major,
         graduation_year: formData.graduation_year,
         phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
       });

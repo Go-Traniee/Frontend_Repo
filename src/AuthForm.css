@@ -1453,10 +1453,7 @@ body:has(.profile-logo) .background-image {
   margin: 0 !important;
   margin-top: -10px !important;
 }
-/* ================================
-   Matching / Loading Page
-   (كل القواعد هون محصورة بـ .matching-page بس)
-================================ */
+
 .matching-page {
   position: relative;
   overflow: hidden;
@@ -1466,7 +1463,7 @@ body:has(.profile-logo) .background-image {
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* الكلام يترّكز بالنص */
+  align-items: center;
   justify-content: flex-start;
 
   padding: 48px 72px;
@@ -1474,18 +1471,15 @@ body:has(.profile-logo) .background-image {
   direction: rtl;
 
   background:
-    /* الأشكال الصغيرة المبعثرة (دوائر ومعينات) */
     radial-gradient(circle 5px at 8% 78%, #f6c453 0%, #f6c453 100%, transparent 100%),
     radial-gradient(circle 4px at 28% 74%, #cbd5e1 0%, #cbd5e1 100%, transparent 100%),
     radial-gradient(circle 6px at 62% 80%, #152f52 0%, #152f52 100%, transparent 100%),
     radial-gradient(circle 4px at 78% 76%, #92c3ff 0%, #92c3ff 100%, transparent 100%),
-    /* التدرّج العلوي الفاتح */
     linear-gradient(180deg, #eaf3ff 0%, #ffffff 55%);
 
   background-repeat: no-repeat;
 }
 
-/* الموجتين بالأسفل (كريمية وزرقاء فاتحة) — خصائص مشتركة بقاعدة وحدة */
 .matching-page::before,
 .matching-page::after {
   content: "";
@@ -1508,7 +1502,6 @@ body:has(.profile-logo) .background-image {
   background: #dceeff;
 }
 
-/* أي عنصر حقيقي جوا الصفحة لازم يطلع فوق الموجتين */
 .matching-page > * {
   position: relative;
   z-index: 1;
@@ -1518,8 +1511,6 @@ body:has(.profile-logo) .background-image {
   display: block;
   width: 96px;
   height: auto;
-
-  /* منفصل عن باقي المحتوى، ثابت بزاوية أعلى اليمين */
   position: absolute;
   top: 48px;
   right: 72px;
@@ -1527,7 +1518,7 @@ body:has(.profile-logo) .background-image {
 }
 
 .matching-title {
-  margin: 170px 0 20px; /* مساحة فوق تعوّض غياب الشعار من التدفق الطبيعي */
+  margin: 170px 0 20px; 
   font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 800;
   color: #0f172a;
@@ -1556,7 +1547,7 @@ body:has(.profile-logo) .background-image {
 .matching-progress-bar {
   position: absolute;
   top: 0;
-  right: 0; /* RTL: التعبئة بتبلش من اليمين */
+  right: 0;
   height: 100%;
   width: 55%;
   border-radius: 999px;
