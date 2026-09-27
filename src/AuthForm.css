@@ -13,7 +13,6 @@
   --radius-xl: 24px;
   --error: #ef4444;
   --form-gap: 16px;
-  /*المسافة بين الحقول ) */
   --input-h: 46px;
   --btn-h: 48px;
 }
@@ -60,7 +59,6 @@ input {
   border-radius: 24px;
 }
 
-/* Left column */
 .signin-section {
   flex-basis: 46%;
   min-width: 0;
@@ -164,7 +162,6 @@ input {
   border-radius: 14px;
 }
 
-/* textarea*/
 .glass-input-wrapper textarea {
   display: block;
   width: 100%;
@@ -259,20 +256,16 @@ option {
   gap: 8px;
 }
 
-/* إخفاء دوائر الراديو الافتراضية تماماً */
 .hidden-radio {
   display: none;
 }
 
-/* تصميم الزر الافتراضي (الغير نشط) */
 .role-label {
   flex: 1;
-  /* ليأخذ كل زر 50% من المساحة */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  /* المسافة بين الأيقونة والنص */
   padding: 6px 16px;
   color: #64748b;
   font-size: 14px;
@@ -286,7 +279,7 @@ option {
 .role-icon {
   font-size: 18px;
 }
-.hidden-radio:checked+.role-label {
+.hidden-radio:checked + .role-label {
   background-color: #0b1b42;
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -467,7 +460,6 @@ option {
   text-align: center;
   width: 100%;
 }
-
 /* ================================
    Hero
 ================================ */
@@ -502,7 +494,6 @@ option {
 .login-image {
   background-image: url("./assets/login_hero_image.jpg");
 }
-
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -524,7 +515,6 @@ option {
   justify-content: center;
   gap: 24px;
 }
-
 .testimonial-card {
   width: 256px;
   flex: 0 0 256px;
@@ -542,7 +532,6 @@ option {
   opacity: 0;
   animation: testimonialIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 .testimonial-card img {
   width: 40px;
   height: 40px;
@@ -550,13 +539,11 @@ option {
   object-fit: cover;
   border-radius: 16px;
 }
-
 .testimonial-content {
   min-width: 0;
   font-size: 14px;
   line-height: 1.35;
 }
-
 .testimonial-name {
   margin: 0;
   font-weight: 600;
@@ -564,7 +551,6 @@ option {
   align-items: center;
   gap: 4px;
 }
-
 .testimonial-handle {
   margin: 2px 0 0;
   color: rgba(255, 255, 255, 0.7);
@@ -579,10 +565,6 @@ option {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
-/* ================================
-   Entrance animations
-================================ */
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
@@ -596,7 +578,6 @@ option {
     transform: translateY(0);
   }
 }
-
 @keyframes slideRightIn {
   from {
     opacity: 0;
@@ -610,7 +591,6 @@ option {
     transform: translateX(0);
   }
 }
-
 @keyframes testimonialIn {
   from {
     opacity: 0;
@@ -624,7 +604,6 @@ option {
     transform: translateY(0) scale(1);
   }
 }
-
 .animate-element {
   opacity: 0;
   animation: fadeSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -641,39 +620,30 @@ option {
 .delay-300 {
   animation-delay: 300ms;
 }
-
 .delay-400 {
   animation-delay: 400ms;
 }
-
 .delay-500 {
   animation-delay: 500ms;
 }
-
 .delay-600 {
   animation-delay: 600ms;
 }
-
 .delay-700 {
   animation-delay: 700ms;
 }
-
 .delay-800 {
   animation-delay: 800ms;
 }
-
 .delay-900 {
   animation-delay: 900ms;
 }
-
 .testimonial-delay-1000 {
   animation-delay: 1000ms;
 }
-
 .testimonial-delay-1200 {
   animation-delay: 1200ms;
 }
-
 .testimonial-delay-1400 {
   animation-delay: 1400ms;
 }
@@ -685,16 +655,13 @@ option {
   .signin-page {
     display: block;
   }
-
   .signin-section {
     min-height: 100vh;
     padding: 28px 20px;
   }
-
   .hero-section {
     display: none;
   }
-
   .signin-container {
     max-width: 520px;
   }
@@ -725,19 +692,16 @@ option {
     padding: 16px;
   }
 }
-
 @media (min-width: 1280px) {
   .testimonial-card:nth-child(n + 2) {
     display: flex;
   }
 }
-
 @media (min-width: 1536px) {
   .testimonial-card:nth-child(n + 3) {
     display: flex;
   }
 }
-
 @media (min-width: 1280px) and (max-width: 1535px) {
   .testimonial-card:nth-child(n + 3) {
     display: none;
@@ -816,14 +780,14 @@ option {
   .role-toggle-container {
     padding: 4px;
   }
-}/* ================================
+}
+/* ================================
    Disabled Input (Locked fields)
 ================================ */
 .glass-input-wrapper.is-disabled {
   background: #f1f5f9;
   cursor: not-allowed;
 }
-
 .glass-input-wrapper.is-disabled input {
   cursor: not-allowed;
   color: #64748b;
@@ -839,19 +803,16 @@ option {
   gap: 10px;
   margin-bottom: 4px;
 }
-
 .step-indicator-item {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .step-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .step-circle {
   display: flex;
   align-items: center;
@@ -865,30 +826,25 @@ option {
   font-weight: 700;
   flex: 0 0 auto;
 }
-
 .step-circle-active,
 .step-circle-done {
   background: #152f52;
 }
-
 .step-label {
   font-size: 13px;
   font-weight: 600;
   color: #94a3b8;
   white-space: nowrap;
 }
-
 .step-label-active {
   color: #152f52;
 }
-
 .step-connector {
   width: 40px;
   height: 1px;
   background: #cbd5e1;
   flex: 0 0 auto;
 }
-
 /* ================================
    Profile Hero Image
 ================================ */
@@ -930,12 +886,10 @@ body:has(.profile-logo) {
   height: auto;
   min-height: calc(100vh - 110px);
   min-height: calc(100dvh - 110px);
-
   margin: 55px 0;
   padding: 0 56px;
-
   display: flex;
-  flex-direction: row-reverse; 
+  flex-direction: row-reverse;
   direction: rtl;
   background: transparent;
   border: none;
@@ -943,20 +897,25 @@ body:has(.profile-logo) {
   overflow: visible;
   box-shadow: none;
 }
-/* ============================================================
-   LEFT SIDE - PROFILE FORM
-============================================================ */
-
+.signin-page:has(#studentProfileStep1),
+.signin-page:has(#organizationProfileStep1) {
+  width: 85%;
+  max-width: 1100px;
+  margin: 55px auto;
+  padding: 0;
+  background: #ffffff;
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 8px 35px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
 .signin-page:has(.profile-logo) .signin-section {
   flex: 0 0 58%;
   min-width: 0;
-
   padding: 32px 55px;
-
   display: flex;
   align-items: flex-start;
   justify-content: center;
-
   overflow: visible;
 }
 .signin-page:has(.profile-logo):not(:has(.hero-section)) .signin-section {
@@ -965,10 +924,8 @@ body:has(.profile-logo) {
 .signin-page:has(.profile-logo) .signin-container {
   width: 100%;
   max-width: 520px;
-
   margin: 0;
 }
-/* المحتوى */
 .signin-page:has(.profile-logo) .signin-content {
   width: 100%;
   display: flex;
@@ -976,8 +933,6 @@ body:has(.profile-logo) {
   align-items: stretch;
   gap: 0;
 }
-/*
-   LOGO*/
 
 .signin-page:has(.profile-logo) .profile-logo {
   display: block;
@@ -997,7 +952,6 @@ body:has(.profile-logo) {
   gap: 10px;
   margin: 0 0 28px;
 }
-/* الدائرة */
 .signin-page:has(.profile-logo) .step-circle {
   width: 20px;
   height: 20px;
@@ -1006,8 +960,6 @@ body:has(.profile-logo) {
   color: #ffffff;
 }
 
-
-/* الدائرة الحالية */
 .signin-page:has(.profile-logo) .step-circle-active {
   background: #152f52;
 }
@@ -1039,28 +991,20 @@ body:has(.profile-logo) {
   height: 1px;
   background: #cbd5e1;
 }
-
 .signin-page:has(.profile-logo) .step-connector.step-connector-done {
   background: #10b981;
 }
-/* 
-   PROFILE TITLE
- */
 .signin-page:has(.profile-logo) .profile-step-title {
   width: 100%;
-
   margin: 0 0 25px;
-
   font-family: "Cairo", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 30px;
   line-height: 42px;
   letter-spacing: -0.75px;
-
   text-align: right;
   vertical-align: middle;
-
   color: #0f172a;
 }
 .signin-page:has(.profile-logo) .profile-step-title span {
@@ -1073,8 +1017,7 @@ body:has(.profile-logo) {
   text-align: right;
   vertical-align: middle;
 }
-/* 
-   FORM*/
+
 .signin-page:has(.profile-logo) .signin-form {
   width: 100%;
   display: flex;
@@ -1092,7 +1035,6 @@ body:has(.profile-logo) {
   color: #334155;
   text-align: right;
 }
-/* الحقل */
 .signin-page:has(.profile-logo) .glass-input-wrapper {
   width: 100%;
   height: 42px;
@@ -1104,38 +1046,27 @@ body:has(.profile-logo) {
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-
-
-/* الحقل المعطل */
 .signin-page:has(.profile-logo) .glass-input-wrapper.is-disabled {
   background: #f1f5f9;
 
   border-color: #e2e8f0;
 }
-/* input */
 .signin-page:has(.profile-logo) .glass-input-wrapper input {
   height: 40px;
   padding: 0 14px;
   padding-right: 38px;
   border-radius: 10px;
-  font-size: 11px;
   color: #475569;
   text-align: right;
 }
-/* placeholder */
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper
-  input::placeholder {
+.signin-page:has(.profile-logo) .glass-input-wrapper input::placeholder {
   color: #a8b1bf;
 }
-
-/* textarea */
 .signin-page:has(.profile-logo) .glass-input-wrapper.textarea-wrapper {
   height: auto;
   min-height: 96px;
   align-items: flex-start;
 }
-
 .signin-page:has(.profile-logo) .glass-input-wrapper textarea {
   min-height: 90px;
   padding: 10px 14px;
@@ -1145,10 +1076,7 @@ body:has(.profile-logo) {
   color: #475569;
   text-align: right;
 }
-
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper
-  textarea::placeholder {
+.signin-page:has(.profile-logo) .glass-input-wrapper textarea::placeholder {
   color: #a8b1bf;
 }
 .signin-page:has(.profile-logo) .select-field-wrapper {
@@ -1157,13 +1085,11 @@ body:has(.profile-logo) {
   gap: 8px;
   padding: 0 14px;
 }
-
 .signin-page:has(.profile-logo) .select-field-wrapper .input-icon {
   position: static;
   transform: none;
   flex: 0 0 auto;
 }
-
 .signin-page:has(.profile-logo) .select-field-wrapper select {
   flex: 1 1 auto;
   min-width: 0;
@@ -1174,62 +1100,41 @@ body:has(.profile-logo) {
   appearance: auto;
   padding: 0;
   border-radius: 10px;
-  font-size: 11px;
+  font-size: 14px;
   color: #475569;
   text-align: right;
 }
-
 .signin-page:has(.profile-logo) .select-field-wrapper select:invalid {
   color: #a8b1bf;
 }
-
-.signin-page:has(.profile-logo)
-  .glass-input-wrapper:focus-within {
+.signin-page:has(.profile-logo) .glass-input-wrapper:focus-within {
   border-color: #9bb4d2;
-
   background: #ffffff;
-
   box-shadow: 0 0 0 2px rgba(21, 47, 82, 0.06);
 }
-
-
-
-
 .signin-page:has(.profile-logo) .input-icon {
   right: 12px;
   left: auto;
-
   font-size: 16px;
-
   color: #94a3b8;
 }
-
-
 .signin-page:has(.profile-logo) .signin-button {
   width: 50%;
   height: 40px;
-
   margin-top: 7px;
-
   border: none;
   border-radius: 12px;
-
   background: #152f52;
   color: #ffffff;
-
   font-size: 12px;
   font-weight: 700;
-
   box-shadow: 0 5px 14px rgba(21, 47, 82, 0.18);
-
   cursor: pointer;
   transition:
     background 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-
-
 .signin-page:has(.profile-logo) .signin-button:hover {
   opacity: 1;
 
@@ -1248,11 +1153,8 @@ body:has(.profile-logo) {
 }
 .signin-page:has(.profile-logo) .hero-section {
   flex: 0 0 42%;
-
   min-width: 0;
-
   padding: 24px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1273,10 +1175,9 @@ body:has(.profile-logo) {
   opacity: 1;
   animation-name: slideLeftIn;
 }
-
-/* الخلفية */
 body:has(.profile-logo) .background-image {
-  background-image: radial-gradient(60% 91% at -4% 9%, #92C3FF 7%, #FFFFFF 65%);
+  background-image: none;
+  background: #eef5fc;
   filter: none;
   opacity: 1;
   position: fixed;
@@ -1284,7 +1185,12 @@ body:has(.profile-logo) .background-image {
   width: 100%;
   height: 100%;
 }
-
+body:has(#studentProfileStep2) .background-image,
+body:has(#organizationProfileStep2) .background-image {
+  background-image: linear-gradient(70deg, #92c3ff 9%, #ffffff 47%);
+  filter: none;
+  opacity: 1;
+}
 @keyframes slideLeftIn {
   from {
     opacity: 0;
@@ -1306,7 +1212,6 @@ body:has(.profile-logo) .background-image {
   padding: 6px 10px;
   cursor: text;
 }
-
 .signin-page:has(.profile-logo) .skills-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1363,14 +1268,11 @@ body:has(.profile-logo) .background-image {
   top: calc(100% + 4px);
   right: 0;
   left: 0;
-
   max-height: 220px;
   overflow-y: auto;
-
   margin: 0;
   padding: 6px;
   list-style: none;
-
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -1417,7 +1319,6 @@ body:has(.profile-logo) .background-image {
   gap: 4px;
   background: #021853;
 }
-
 .signin-page:has(.profile-logo) .prev-button {
   width: fit-content;
   height: 48px;
@@ -1425,11 +1326,13 @@ body:has(.profile-logo) .background-image {
   padding: 0 35.68px;
   border-radius: 8px;
   gap: 4px;
-
   background: #ffffff;
   color: #152f52;
   border: 1.5px solid #152f52;
   box-shadow: none;
+}
+.signin-page:has(.profile-logo) .prev-button:hover {
+  background-color: #0f27472e;
 }
 .signin-page:has(.profile-logo) .phone-field-row {
   display: flex;
@@ -1437,13 +1340,11 @@ body:has(.profile-logo) .background-image {
   gap: 8px;
   width: 100%;
 }
-
 .signin-page:has(.profile-logo) .phone-number-wrapper {
   flex: 1 1 auto;
   width: auto;
   min-width: 0;
 }
-
 .signin-page:has(.profile-logo) .phone-code-wrapper {
   flex: 0 0 92px;
   width: 92px;
@@ -1461,6 +1362,17 @@ body:has(.profile-logo) .background-image {
   color: #475569;
   text-align: center;
 }
-.signin-page:has(.profile-logo) .phone-field-row.has-error .glass-input-wrapper {
+.signin-page:has(.profile-logo)
+  .phone-field-row.has-error
+  .glass-input-wrapper {
   border-color: var(--error);
+}
+.major {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.resize-height {
+  margin: 0 !important;
+  margin-top: -10px !important;
 }
