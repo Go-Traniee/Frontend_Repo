@@ -24,7 +24,6 @@ import {
   ACADEMIC_MAJORS,
   getGraduationYears,
 } from "../constants/academicOptions";
-
 const STEPS = ["البيانات الشخصية", "البيانات الأكاديمية والمهارات"];
 
 function splitPhone(fullPhone) {
@@ -49,14 +48,15 @@ function StudentProfile() {
   const [submitting, setSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
-    email: "",
-    name: "",
-    university: "",
-    academic_major: "",
-    graduation_year: "",
-    phone: "",
-    phone_code: "+970",
-  });
+  email: "",
+  name: "",
+  university: "",
+  academic_major: "",
+  specific_major: "",
+  graduation_year: "",
+  phone: "",
+  phone_code: "+970",
+});
 
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [errorMsg, setErrorMsg] = useState({});
@@ -73,6 +73,7 @@ function StudentProfile() {
           name: data.name || "",
           university: data.university || "",
           academic_major: data.academic_major || "",
+          specific_major: data.specific_major || "",
           graduation_year: data.graduation_year || "",
           phone_code,
           phone,
@@ -141,17 +142,16 @@ function StudentProfile() {
 
     const newErrors = {};
 
-    if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
-    if (!formData.academic_major) newErrors.academic_major = "التخصص الجامعي مطلوب";
-    if (!formData.graduation_year) newErrors.graduation_year = "سنة التخرج مطلوبة";
-
-    if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
-      newErrors.phone = "رقم الهاتف غير صحيح";
-    }
-
-    if (selectedSkills.length === 0) {
-      newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
-    }
+if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
+else if (!formData.academic_major)
+  newErrors.academic_major = "التخصص الجامعي مطلوب";
+else if (!formData.graduation_year)
+  newErrors.graduation_year = "سنة التخرج مطلوبة";
+else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
+  newErrors.phone = "رقم الهاتف غير صحيح";
+} else if (selectedSkills.length === 0) {
+  newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
+}
 
     setErrorMsg(newErrors);
 
@@ -189,7 +189,9 @@ function StudentProfile() {
     <>
       <div className="background-image"></div>
 
-      <main className="signin-page">
+     <main
+  className={`signin-page ${currentStep === 1 ? "" : "resize-height"}`}
+>
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
