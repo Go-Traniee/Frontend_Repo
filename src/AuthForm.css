@@ -1187,7 +1187,7 @@ body:has(.profile-logo) .background-image {
 }
 body:has(#studentProfileStep2) .background-image,
 body:has(#organizationProfileStep2) .background-image {
-  background-image: linear-gradient(70deg, #92c3ff 9%, #ffffff 47%);
+  background-image: linear-gradient(238deg, #92c3ff 9%, #ffffff 47%);
   filter: none;
   opacity: 1;
 }
