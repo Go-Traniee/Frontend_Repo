@@ -168,6 +168,7 @@ function StudentProfile() {
         name: formData.name,
         university: formData.university,
         academic_major: formData.academic_major,
+        specific_major: formData.specific_major,
         graduation_year: formData.graduation_year,
         phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
       });
@@ -178,7 +179,7 @@ function StudentProfile() {
         ),
       );
 
-      navigate("/");
+      navigate("/student/matching");
     } catch (error) {
       console.log("فشل حفظ البيانات", error);
       setErrorMsg({
@@ -297,7 +298,7 @@ function StudentProfile() {
                     onChange={handleChange}
                     options={getGraduationYears()}
                     error={errorMsg.graduation_year}
-                    placeholder="اختر سنة التخرج "
+                    placeholder=" سنة التخرج "
                   />
 
                   <PhoneField
