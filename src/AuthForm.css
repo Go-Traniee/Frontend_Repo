@@ -1260,16 +1260,16 @@ body:has(.profile-logo) .background-image {
   width: 100%;
   height: 100%;
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 body:has(#studentProfileStep2) .background-image,
 body:has(#organizationProfileStep2) .background-image {
   background-image: linear-gradient(238deg, #92c3ff 9%, #ffffff 47%);
   filter: none;
   opacity: 1;
 }
-=======
+/* ======= */
 
->>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
+/* >>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b */
 @keyframes slideLeftIn {
   from {
     opacity: 0;
@@ -1462,8 +1462,8 @@ body:has(#organizationProfileStep2) .background-image {
   margin: 0 !important;
   margin-top: -10px !important;
 }
-<<<<<<< HEAD
-=======
+/* <<<<<<< HEAD */
+/* ======= */
 
 .matching-page {
   position: relative;
@@ -1482,10 +1482,30 @@ body:has(#organizationProfileStep2) .background-image {
   direction: rtl;
 
   background:
-    radial-gradient(circle 5px at 8% 78%, #f6c453 0%, #f6c453 100%, transparent 100%),
-    radial-gradient(circle 4px at 28% 74%, #cbd5e1 0%, #cbd5e1 100%, transparent 100%),
-    radial-gradient(circle 6px at 62% 80%, #152f52 0%, #152f52 100%, transparent 100%),
-    radial-gradient(circle 4px at 78% 76%, #92c3ff 0%, #92c3ff 100%, transparent 100%),
+    radial-gradient(
+      circle 5px at 8% 78%,
+      #f6c453 0%,
+      #f6c453 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 4px at 28% 74%,
+      #cbd5e1 0%,
+      #cbd5e1 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 6px at 62% 80%,
+      #152f52 0%,
+      #152f52 100%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle 4px at 78% 76%,
+      #92c3ff 0%,
+      #92c3ff 100%,
+      transparent 100%
+    ),
     linear-gradient(180deg, #eaf3ff 0%, #ffffff 55%);
 
   background-repeat: no-repeat;
@@ -1529,7 +1549,7 @@ body:has(#organizationProfileStep2) .background-image {
 }
 
 .matching-title {
-  margin: 170px 0 20px; 
+  margin: 170px 0 20px;
   font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 800;
   color: #0f172a;
@@ -1611,4 +1631,4 @@ body:has(#organizationProfileStep2) .background-image {
     margin-top: 120px;
   }
 }
->>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
+/* >>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b */
