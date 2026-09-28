@@ -22,7 +22,11 @@ import logo from "../assets/logo.svg";
 import {
   UNIVERSITIES,
   ACADEMIC_MAJORS,
+<<<<<<< HEAD
   SPECIFIC_MAJORS,
+=======
+  SPECIFIC_MAJOR,
+>>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
   getGraduationYears,
 } from "../constants/academicOptions";
 
@@ -148,7 +152,11 @@ function StudentProfile() {
     else if (!formData.academic_major)
       newErrors.academic_major = "التخصص الجامعي مطلوب";
     else if (!formData.specific_major)
+<<<<<<< HEAD
       newErrors.specific_major = "التخصص الجامعي مطلوب";
+=======
+      newErrors.specific_major = "التخصص المهاري مطلوب";
+>>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
     else if (!formData.graduation_year)
       newErrors.graduation_year = "سنة التخرج مطلوبة";
     else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
@@ -179,7 +187,7 @@ function StudentProfile() {
         ),
       );
 
-      navigate("/");
+      navigate("/student/matching");
     } catch (error) {
       console.log("فشل حفظ البيانات", error);
       setErrorMsg({
@@ -195,7 +203,11 @@ function StudentProfile() {
       <div className="background-image"></div>
 
       <main
+<<<<<<< HEAD
         className={`signin-page ${currentStep === 2 ? "resize-height" : ""}`}
+=======
+        className={`signin-page ${currentStep === 1 ? "" : "resize-height"}`}
+>>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
       >
         <HeroAuthForm isProfile={true} currentStep={currentStep} />
 
@@ -267,6 +279,10 @@ function StudentProfile() {
                   />
 
                   <div className="major">
+<<<<<<< HEAD
+=======
+                    {" "}
+>>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
                     <SelectField
                       label="التخصص الجامعي"
                       icon={<FaGraduationCap className="input-icon" />}
@@ -283,11 +299,20 @@ function StudentProfile() {
                       name="specific_major"
                       value={formData.specific_major}
                       onChange={handleChange}
+<<<<<<< HEAD
                       options={SPECIFIC_MAJORS}
                       error={errorMsg.specific_major}
                       placeholder="اخترالتخصص المهاري"
                     />
                   </div>
+=======
+                      options={SPECIFIC_MAJOR}
+                      error={errorMsg.specific_major}
+                      placeholder="اختر التخصص الذي تتقنه"
+                    />
+                  </div>
+
+>>>>>>> 18ed9ba4e495a281857dd6e041615c491f22f17b
                   <SelectField
                     label="سنة التخرج / المتوقعة"
                     icon={<FaCalendarAlt className="input-icon" />}
@@ -296,7 +321,7 @@ function StudentProfile() {
                     onChange={handleChange}
                     options={getGraduationYears()}
                     error={errorMsg.graduation_year}
-                    placeholder="اختر سنة التخرج "
+                    placeholder=" سنة التخرج "
                   />
                   <PhoneField
                     label="رقم الهاتف المحمول"
