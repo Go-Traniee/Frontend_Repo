@@ -9,7 +9,7 @@ function MatchingLoading() {
   useEffect(() => {
     // حنستبدله ب api حقيقي للفرص
     const timer = setTimeout(() => {
-      navigate("/");
+      navigate("/dashboard");
     }, 3000);
 
     return () => clearTimeout(timer);

@@ -70,3 +70,32 @@ export const register = async (formData) => {
     throw error;
   }
 };
+/**
+ * دالة تسجيل الخروج 
+ * @returns {Promise<Object>}
+ */
+export const logout = async () => {
+  const token = localStorage.getItem('auth_token');
+
+  try {
+    const response = await fetch(`${BASE_URL}/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to logout.');
+    }
+
+    return data;
+  } finally {
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('auth_user');
+  }
+};

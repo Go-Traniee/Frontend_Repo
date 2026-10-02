@@ -99,3 +99,27 @@ export const addStudentSkill = async ({ skill_id, proficiency }) => {
     throw error;
   }
 };
+export const getStudentSkills = async () => {
+  try {
+    const token = localStorage.getItem("auth_token");
+
+    const response = await fetch(`${BASE_URL}/student/skills`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Failed to fetch student skills.");
+    }
+
+    return result.data;
+  } catch (error) {
+    throw error;
+  }
+};

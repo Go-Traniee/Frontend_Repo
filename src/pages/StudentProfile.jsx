@@ -54,7 +54,7 @@ function StudentProfile() {
     name: "",
     university: "",
     academic_major: "",
-    specific_major: "",
+    specialization: "",
     graduation_year: "",
     phone: "",
     phone_code: "+970",
@@ -68,14 +68,13 @@ function StudentProfile() {
       try {
         const data = await getStudentProfile();
         const { phone_code, phone } = splitPhone(data.phone);
-
         setFormData((prev) => ({
           ...prev,
           email: data.email || "",
           name: data.name || "",
           university: data.university || "",
           academic_major: data.academic_major || "",
-          specific_major: data.specific_major || "",
+          specialization: data.specialization || "",
           graduation_year: data.graduation_year || "",
           phone_code,
           phone,
@@ -147,8 +146,8 @@ function StudentProfile() {
     if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
     else if (!formData.academic_major)
       newErrors.academic_major = "التخصص الجامعي مطلوب";
-    else if (!formData.specific_major)
-      newErrors.specific_major = "التخصص المهاري مطلوب";
+    else if (!formData.specialization)
+      newErrors.specialization = "التخصص المهاري مطلوب";
     else if (!formData.graduation_year)
       newErrors.graduation_year = "سنة التخرج مطلوبة";
     else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
@@ -168,7 +167,7 @@ function StudentProfile() {
         name: formData.name,
         university: formData.university,
         academic_major: formData.academic_major,
-        specific_major: formData.specific_major,
+        specialization: formData.specialization,
         graduation_year: formData.graduation_year,
         phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
       });
@@ -281,11 +280,11 @@ function StudentProfile() {
                     <SelectField
                       label="التخصص الفرعي"
                       icon={<FaGraduationCap className="input-icon" />}
-                      name="specific_major"
-                      value={formData.specific_major}
+                      name="specialization"
+                      value={formData.specialization}
                       onChange={handleChange}
                       options={SPECIFIC_MAJOR}
-                      error={errorMsg.specific_major}
+                      error={errorMsg.specialization}
                       placeholder="اختر التخصص الذي تتقنه"
                     />
                   </div>

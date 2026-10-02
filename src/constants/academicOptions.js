@@ -9,7 +9,7 @@ export const UNIVERSITIES = [
 ];
 
 export const ACADEMIC_MAJORS = [
-  "هندسة الحاسوب",
+  "هندسة أنظمةالحاسوب",
   "علوم الحاسوب",
   "نظم المعلومات ",
   "هندسة البرمجيات",
@@ -33,7 +33,7 @@ export const SPECIFIC_MAJOR = [
 export const getGraduationYears = () => {
   const currentYear = new Date().getFullYear();
   const years = [];
-  for (let y = currentYear; y <= currentYear + 6; y++) {
+  for (let y = 2022; y <= currentYear + 6; y++) {
     years.push(y);
   }
   return years;
