@@ -94,14 +94,7 @@ function Dashboard() {
           </p>
 
           <div className="dashboard-banner-actions">
-            <Link
-              to="/student/profile"
-              className="dashboard-banner-btn dashboard-banner-btn-light"
-            >
-              <span>إكمال الملف الشخصي</span>
-              <CircularProgress percent={completion} size={26} />
-            </Link>
-
+           
             <Link
               to="/student/assessment"
               className="dashboard-banner-btn dashboard-banner-btn-primary"
@@ -110,6 +103,14 @@ function Dashboard() {
               <span className="btn-arrow-badge">
                 <FaChevronLeft />
               </span>
+            </Link>
+
+             <Link
+              to="/student/profile"
+              className="dashboard-banner-btn dashboard-banner-btn-light"
+            >
+              <span>إكمال الملف الشخصي</span>
+              <CircularProgress percent={completion} size={26} />
             </Link>
           </div>
         </div>

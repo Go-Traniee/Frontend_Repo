@@ -1,94 +1,167 @@
-/*Dashboard Banner */
+/*Dashboard Banner*/
 .dashboard-banner {
   position: relative;
+
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+
   direction: ltr;
+
+  width: 100%;
+  min-height: 272px;
+
+  box-sizing: border-box;
+
   background: #071426;
+
   border-radius: 16px;
-  padding: 28px 34px;
+
+  padding: 34px 42px;
+
   overflow: hidden;
-  min-height: 220px;
 }
 .dashboard-banner-illustration {
   position: absolute;
+
   left: 90px;
-  bottom: 1;
-  width: 250px;
+  bottom: 2;
+
+  width: 265px;
   height: auto;
-  z-index: 0;
+
+  max-height: 245px;
+
+  object-fit: contain;
+  object-position: bottom center;
+
+  z-index: 1;
 }
 .dashboard-banner-content {
   position: relative;
-  z-index: 1;
-  max-width: 570px;
+
+  z-index: 2;
   width: 100%;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: 0;
+
   text-align: right;
+
   direction: rtl;
-  padding-right: 10px;
 }
+
+/* العنوان */
 .dashboard-banner-title {
-  color: #ffffff;
-  font-family: "Cairo", sans-serif;
-  font-size: 25px;
-  font-weight: 800;
-  line-height: 1.5;
   margin: 0 0 8px;
+
+  color: #ffffff;
+
+  font-family: "Cairo", sans-serif;
+
+  font-size: 35px;
+  font-weight: 800;
+
+  line-height: 1.5;
+  transform: translate(-25px, 0px);
 }
+
+/* النص تحت العنوان */
 .dashboard-banner-subtitle {
+  margin: 0 0 20px;
   color: #cbd5e1;
-  font-size: 13px;
+  font-family: "Cairo", sans-serif;
+
+  font-size: 15px;
+  font-weight: 400;
+
   line-height: 1.8;
-  margin: 0 0 18px;
+  transform: translate(-11px, 5px);
 }
+
+
+/* أزرار الـ Banner */
 .dashboard-banner-actions {
   display: flex;
-  gap: 10px;
-  justify-content: flex-start;
   align-items: center;
+
+  justify-content: flex-start;
+
   direction: rtl;
+
+  gap: 10px;
 }
+
+/* شكل الزر */
 .dashboard-banner-btn {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 8px;
-  min-height: 38px;
-  padding: 9px 15px;
-  border-radius: 9px;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
+
+  min-height: 54px;
+
+  padding: 10px 20px;
+
   border: 0;
-}
-.dashboard-banner-btn:hover {
-  opacity: 0.85;
+
+  border-radius: 11px;
+
+  font-family: "Cairo", sans-serif;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
+.dashboard-banner-btn:hover {
+  opacity: 0.9;
+
+  transform: translateY(-1px);
+}
+
+/*زر إكمال الملف الشخصي */
 .dashboard-banner-btn-light {
-  background: rgba(255, 255, 255, 0.12);
+  background: #123451;
+
   color: #ffffff;
+
+  border: 1px solid #24536e;
 }
+
+/* زراختبار المهارات */
 .dashboard-banner-btn-primary {
-  background: #18a8d7;
-  color: #ffffff;
+  background: #2099c7;
+
+  color: #071426;
 }
+
 .btn-arrow-badge {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+
+  background: rgba(255, 255, 255, 0.22);
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-size: 10px;
+
   flex: 0 0 auto;
 }
-
 .circular-progress {
   position: relative;
   display: inline-flex;
@@ -96,117 +169,184 @@
   justify-content: center;
   flex: 0 0 auto;
 }
+
 .circular-progress-label {
   position: absolute;
+
   font-size: 9px;
+
   font-weight: 800;
+
   color: #ffffff;
 }
-
-/*Dashboard Sections */
+/*Dashboard Sections*/
 .dashboard-section {
-  margin-top: 24px;
+  margin-top: 46px;
 }
 
 .dashboard-section-header {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
-}
 
+  margin-bottom: 16px;
+}
 .dashboard-section-title {
-  font-size: 17px;
-  font-weight: 800;
-  color: #0f172a;
   margin: 0;
+  color: #0f172a;
+  font-family: "Cairo", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .dashboard-section-link {
-  font-size: 12px;
-  font-weight: 700;
   color: #152f52;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
   text-decoration: none;
 }
+
 .dashboard-section-link:hover {
   text-decoration: underline;
 }
 
-/*Empty State*/
 .empty-state {
+  min-height: 92px;
+
+  box-sizing: border-box;
+
   background: #ffffff;
+
   border: 1px dashed #d7e1e8;
+
   border-radius: 14px;
+
   padding: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   text-align: center;
+
   color: #94a3b8;
+
   font-size: 13px;
 }
-
-/*Stats*/
 .stats-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+
+  gap: 16px;
 }
+
 .stat-card {
+  min-height: 98px;
+
   background: #ffffff;
+
   border: 1px solid #e0e8ee;
+
   border-radius: 13px;
+
   padding: 17px;
+
   text-align: right;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 2px 5px rgba(15, 23, 42, 0.03);
 }
 
 .stat-card-top {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+
+  margin-bottom: 10px;
 }
+
 .stat-trend {
   font-size: 10px;
-  color: #10b981;
+
+  color: #152f52;
+
+  background: #eef6ff;
+
+  padding: 4px 8px;
+
+  border-radius: 8px;
+
   font-weight: 600;
 }
+
 .stat-icon {
   width: 30px;
   height: 30px;
+
   border-radius: 8px;
-  background: #f1f5f9;
+
+  background: #eff6ff;
+
   color: #152f52;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-size: 13px;
 }
 
 .stat-value {
   display: block;
-  font-size: 24px;
-  font-weight: 800;
+
   color: #0f172a;
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
 }
+
 .stat-label {
   display: block;
-  font-size: 12px;
-  color: #64748b;
+
   margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 12px;
 }
-
-/*Activity */
-
+/*Activity*/
 .activity-list {
   background: #ffffff;
+
   border: 1px solid #e0e8ee;
+
   border-radius: 13px;
+
   overflow: hidden;
 }
 
 .activity-item {
   display: flex;
+
   align-items: flex-start;
+
   gap: 12px;
+
   padding: 13px 16px;
+
   border-bottom: 1px solid #e5ebef;
 }
 
@@ -217,76 +357,84 @@
 .activity-icon {
   width: 32px;
   height: 32px;
+
   border-radius: 50%;
+
   background: #f1f5f9;
+
   color: #152f52;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-size: 13px;
+
   flex: 0 0 auto;
 }
 
 .activity-content {
   flex: 1;
+
   text-align: right;
 }
 
 .activity-title {
-  font-size: 13px;
-
-  font-weight: 700;
+  margin: 0 0 3px;
 
   color: #0f172a;
 
-  margin: 0 0 3px;
+  font-size: 13px;
+
+  font-weight: 700;
 }
 
 .activity-description {
-  font-size: 11px;
+  margin: 0;
 
   color: #64748b;
 
-  margin: 0;
+  font-size: 11px;
 }
 
 .activity-time {
-  font-size: 10px;
-
   color: #94a3b8;
+
+  font-size: 10px;
 
   white-space: nowrap;
 
   flex: 0 0 auto;
 }
-
-/*Dashboard Responsive*/
-
+/*Responsive*/
 @media (max-width: 1023px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
   .dashboard-banner {
-    min-height: 210px;
+    min-height: 250px;
 
-    padding: 26px 28px;
+    padding: 28px 32px;
   }
 
   .dashboard-banner-illustration {
-    left: 20px;
+    left: 25px;
 
-    width: 220px;
+    width: 225px;
+
+    max-height: 220px;
   }
 
   .dashboard-banner-content {
-    max-width: 500px;
+    max-width: 520px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 700px) {
   .dashboard-banner {
-    min-height: 320px;
+    min-height: 360px;
 
     align-items: flex-start;
 
@@ -295,16 +443,28 @@
 
   .dashboard-banner-content {
     max-width: 100%;
+
+    margin-right: 0;
+  }
+
+  .dashboard-banner-title {
+    font-size: 22px;
+  }
+
+  .dashboard-banner-subtitle {
+    font-size: 12px;
   }
 
   .dashboard-banner-illustration {
     left: 50%;
 
+    bottom: 0;
+
     transform: translateX(-50%);
 
     width: 190px;
 
-    opacity: 0.95;
+    max-height: 180px;
   }
 
   .dashboard-banner-actions {

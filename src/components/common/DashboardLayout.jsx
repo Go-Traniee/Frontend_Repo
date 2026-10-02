@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import {
   FaTh,
@@ -16,16 +22,39 @@ import {
 import { getStudentProfile } from "../../services/studentService";
 import { logout } from "../../services/authService";
 
-import logo from "../../assets/logo.svg";
 import "./DashboardLayout.css";
 
 const NAV_ITEMS = [
-  { label: "لوحة التحكم", icon: <FaTh />, to: "/dashboard" },
-  { label: "الملف الشخصي", icon: <FaRegUser />, to: "/student/profile" },
-  { label: "المهارات", icon: <FaLightbulb />, to: "/student/skills" },
-  { label: "التدريبات", icon: <FaBook />, to: "/trainings" },
-  { label: "الوظائف", icon: <FaBriefcase />, to: "/jobs" },
-  { label: "الإعدادات", icon: <FaCog />, to: "/settings" },
+  {
+    label: "لوحة التحكم",
+    icon: <FaTh />,
+    to: "/dashboard",
+  },
+  {
+    label: "الملف الشخصي",
+    icon: <FaRegUser />,
+    to: "/student/profile",
+  },
+  {
+    label: "المهارات",
+    icon: <FaLightbulb />,
+    to: "/student/skills",
+  },
+  {
+    label: "التدريبات",
+    icon: <FaBook />,
+    to: "/trainings",
+  },
+  {
+    label: "الوظائف",
+    icon: <FaBriefcase />,
+    to: "/jobs",
+  },
+  {
+    label: "الإعدادات",
+    icon: <FaCog />,
+    to: "/settings",
+  },
 ];
 
 function getCurrentUser() {
@@ -39,8 +68,12 @@ function getCurrentUser() {
 function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const [searchValue, setSearchValue] = useState("");
-  const [userName, setUserName] = useState(() => getCurrentUser()?.name || "");
+
+  const [userName, setUserName] = useState(
+    getCurrentUser()?.name || ""
+  );
 
   useEffect(() => {
     setUserName(getCurrentUser()?.name || "");
@@ -50,12 +83,18 @@ function DashboardLayout() {
     const syncProfile = async () => {
       try {
         const profile = await getStudentProfile();
+
         if (profile?.name) {
           const storedUser = getCurrentUser() || {};
+
           localStorage.setItem(
             "auth_user",
-            JSON.stringify({ ...storedUser, name: profile.name }),
+            JSON.stringify({
+              ...storedUser,
+              name: profile.name,
+            })
           );
+
           setUserName(profile.name);
         }
       } catch (error) {
@@ -66,7 +105,9 @@ function DashboardLayout() {
     syncProfile();
   }, []);
 
-  const userInitial = userName ? userName.trim().charAt(0) : "";
+  const userInitial = userName
+    ? userName.trim().charAt(0)
+    : "";
 
   const handleLogout = async () => {
     try {
@@ -80,64 +121,129 @@ function DashboardLayout() {
 
   return (
     <div className="app-layout">
+
+      {/* ================= SIDEBAR ================= */}
+
       <aside className="app-sidebar">
+
+        {/* Logo */}
+
         <div className="sidebar-logo">
-          <span className="sidebar-logo-text">
+
+          <div className="sidebar-logo-mark">
+            <span>GT</span>
+          </div>
+
+          <div className="sidebar-logo-text">
             <span className="brand-go">Go</span>
             <span className="brand-trainee">Trainee</span>
-          </span>
-          <img src={logo} alt="GoTrainee Logo" className="sidebar-logo-icon" />
+          </div>
+
         </div>
 
-        <p className="sidebar-section-label">القائمة الرئيسية</p>
+        {/* Section title */}
+
+        <p className="sidebar-section-label">
+          القائمة الرئيسية
+        </p>
+
+        {/* Navigation */}
 
         <nav className="sidebar-nav">
+
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `sidebar-link ${isActive ? "sidebar-link-active" : ""}`
+                `sidebar-link ${
+                  isActive ? "sidebar-link-active" : ""
+                }`
               }
             >
-              <span className="sidebar-link-icon">{item.icon}</span>
-              <span>{item.label}</span>
+              <span className="sidebar-link-icon">
+                {item.icon}
+              </span>
+
+              <span className="sidebar-link-text">
+                {item.label}
+              </span>
             </NavLink>
           ))}
+
         </nav>
 
-        <button className="sidebar-logout" onClick={handleLogout}>
+        {/* Logout */}
+
+        <button
+          className="sidebar-logout"
+          onClick={handleLogout}
+        >
           <FaSignOutAlt className="sidebar-link-icon" />
+
           <span>تسجيل الخروج</span>
         </button>
+
       </aside>
 
+      {/* ================= MAIN ================= */}
+
       <div className="app-main">
+
+        {/* Topbar */}
+
         <header className="app-topbar">
+
+          {/* Search */}
+
           <div className="topbar-search">
+
             <input
               type="text"
               value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
+              onChange={(e) =>
+                setSearchValue(e.target.value)
+              }
               placeholder="ابحث عن الدورات، التدريبات، المشرفين..."
             />
+
             <FaSearch className="topbar-search-icon" />
+
           </div>
 
-          <button className="topbar-bell" aria-label="الإشعارات">
+          {/* Notification */}
+
+          <button
+            className="topbar-bell"
+            aria-label="الإشعارات"
+          >
             <FaBell />
           </button>
 
+          {/* User */}
+
           <div className="topbar-user">
-            <div className="topbar-avatar">{userInitial}</div>
-            <span className="topbar-username">{userName}</span>
+
+            <div className="topbar-avatar">
+              {userInitial}
+            </div>
+
+            <span className="topbar-username">
+              {userName}
+            </span>
+
           </div>
+
         </header>
+
+        {/* Page */}
 
         <main className="app-content">
           <Outlet />
         </main>
+
       </div>
+
     </div>
   );
 }
