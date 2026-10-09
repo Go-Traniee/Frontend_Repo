@@ -15,7 +15,6 @@ import {
   FaBriefcase,
   FaCog,
   FaSignOutAlt,
-  FaSearch,
   FaBell,
 } from "react-icons/fa";
 
@@ -69,7 +68,6 @@ function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [searchValue, setSearchValue] = useState("");
 
   const [userName, setUserName] = useState(
     getCurrentUser()?.name || ""
