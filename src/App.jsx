@@ -35,6 +35,7 @@ function App() {
         <Route path="/student/skills" element={<StudentSkills />} />
         <Route path="/student/assessment" element={<StudentAssessment />} />
       </Route>
+      <Route path="/organization/matching" element={<MatchingLoading />} />
     </Routes>
   );
 }

@@ -6,24 +6,21 @@
   justify-content: flex-start;
   direction: ltr;
   width: 100%;
-  max-width: 1205px;
   height: 256px;
-  min-height: 256px;
+  min-height: 200px;
   box-sizing: border-box;
   background: #071426;
   border-radius: 16px;
-  padding: 32px;
+  padding: 24px 32px;
   overflow: hidden;
 }
 .dashboard-banner-illustration {
   position: relative;
   flex: 0 0 auto;
-
-  width: 245px;
-  height: 192px;
-
+  width: 200px;
+  height: auto;
+  max-height: 160px;
   object-fit: contain;
-
   z-index: 1;
 }
 

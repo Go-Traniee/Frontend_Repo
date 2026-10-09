@@ -178,23 +178,7 @@ function DashboardLayout() {
       <div className="app-main">
 
         <header className="app-topbar">
-
-          {isProfilePage ? (
-            <div style={{ flex: 1 }} />
-          ) : (
-            <div className="topbar-search">
-              <input
-                type="text"
-                value={searchValue}
-                onChange={(e) =>
-                  setSearchValue(e.target.value)
-                }
-                placeholder="ابحث عن الدورات، التدريبات، المشرفين..."
-              />
-
-              <FaSearch className="topbar-search-icon" />
-            </div>
-          )}
+      <div style={{ flex: 1 }} />
 
           <button
             className="topbar-bell"

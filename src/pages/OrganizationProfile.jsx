@@ -142,7 +142,7 @@ function OrganizationProfile() {
         website: formData.website,
         contact_person: formData.contact_person,
       });
-      navigate("/");
+      navigate("/organization/matching");
     } catch (error) {
       console.log("فشل حفظ بيانات المؤسسة:", error);
       setErrorMsg({ submit: error.message || "حدث خطأ أثناء الحفظ، حاول مرة أخرى" });
