@@ -9,7 +9,7 @@ export const UNIVERSITIES = [
 ];
 
 export const ACADEMIC_MAJORS = [
-  "هندسة أنظمةالحاسوب",
+  "هندسة أنظمة الحاسوب",
   "علوم الحاسوب",
   "نظم المعلومات ",
   "هندسة البرمجيات",

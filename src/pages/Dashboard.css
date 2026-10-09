@@ -1,48 +1,41 @@
-/*Dashboard Banner*/
+/*DASHBOARD BANNER */
 .dashboard-banner {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   direction: ltr;
-
   width: 100%;
-  min-height: 272px;
-
+  max-width: 1205px;
+  height: 256px;
+  min-height: 256px;
   box-sizing: border-box;
-
   background: #071426;
-
   border-radius: 16px;
-
-  padding: 34px 42px;
-
+  padding: 32px;
   overflow: hidden;
 }
 .dashboard-banner-illustration {
-  position: absolute;
+  position: relative;
+  flex: 0 0 auto;
 
-  left: 90px;
-  bottom: 2;
-
-  width: 265px;
-  height: auto;
-
-  max-height: 245px;
+  width: 245px;
+  height: 192px;
 
   object-fit: contain;
-  object-position: bottom center;
 
   z-index: 1;
 }
+
 .dashboard-banner-content {
   position: relative;
 
   z-index: 2;
+
   width: 100%;
-  max-width: 650px;
+
+  max-width: 620px;
+
   margin-left: auto;
   margin-right: 0;
 
@@ -51,7 +44,8 @@
   direction: rtl;
 }
 
-/* العنوان */
+/*TITLE */
+
 .dashboard-banner-title {
   margin: 0 0 8px;
 
@@ -59,48 +53,48 @@
 
   font-family: "Cairo", sans-serif;
 
-  font-size: 35px;
+  font-size: 30px;
+
   font-weight: 800;
 
   line-height: 1.5;
-  transform: translate(-25px, 0px);
+
+  transform: translate(-25px, 0);
 }
 
-/* النص تحت العنوان */
+/*SUBTITLE */
+
 .dashboard-banner-subtitle {
   margin: 0 0 20px;
+
   color: #cbd5e1;
+
   font-family: "Cairo", sans-serif;
 
   font-size: 15px;
+
   font-weight: 400;
 
   line-height: 1.8;
+
   transform: translate(-11px, 5px);
 }
-
-
-/* أزرار الـ Banner */
 .dashboard-banner-actions {
   display: flex;
+
   align-items: center;
 
   justify-content: flex-start;
-
   direction: rtl;
 
   gap: 10px;
 }
-
-/* شكل الزر */
 .dashboard-banner-btn {
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
-
   gap: 8px;
-
   min-height: 54px;
 
   padding: 10px 20px;
@@ -112,6 +106,7 @@
   font-family: "Cairo", sans-serif;
 
   font-size: 14px;
+
   font-weight: 700;
 
   text-decoration: none;
@@ -125,11 +120,8 @@
 
 .dashboard-banner-btn:hover {
   opacity: 0.9;
-
   transform: translateY(-1px);
 }
-
-/*زر إكمال الملف الشخصي */
 .dashboard-banner-btn-light {
   background: #123451;
 
@@ -137,8 +129,6 @@
 
   border: 1px solid #24536e;
 }
-
-/* زراختبار المهارات */
 .dashboard-banner-btn-primary {
   background: #2099c7;
 
@@ -152,9 +142,7 @@
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.22);
-
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -164,9 +152,12 @@
 }
 .circular-progress {
   position: relative;
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   flex: 0 0 auto;
 }
 
@@ -179,24 +170,30 @@
 
   color: #ffffff;
 }
-/*Dashboard Sections*/
+
 .dashboard-section {
-  margin-top: 46px;
+  margin-top: 42px;
 }
 
 .dashboard-section-header {
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 
   margin-bottom: 16px;
 }
+
 .dashboard-section-title {
   margin: 0;
+
   color: #0f172a;
+
   font-family: "Cairo", sans-serif;
+
   font-size: 20px;
+
   font-weight: 800;
 }
 
@@ -213,7 +210,6 @@
 .dashboard-section-link:hover {
   text-decoration: underline;
 }
-
 .empty-state {
   min-height: 92px;
 
@@ -261,51 +257,33 @@
 
   box-sizing: border-box;
 
-  box-shadow:
-    0 2px 5px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
 }
-
 .stat-card-top {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   margin-bottom: 10px;
 }
-
 .stat-trend {
   font-size: 10px;
-
   color: #152f52;
-
   background: #eef6ff;
-
   padding: 4px 8px;
-
   border-radius: 8px;
-
   font-weight: 600;
 }
-
 .stat-icon {
   width: 30px;
   height: 30px;
-
   border-radius: 8px;
-
   background: #eff6ff;
-
   color: #152f52;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   font-size: 13px;
 }
-
 .stat-value {
   display: block;
 
@@ -327,7 +305,6 @@
 
   font-size: 12px;
 }
-/*Activity*/
 .activity-list {
   background: #ffffff;
 
@@ -407,7 +384,6 @@
 
   flex: 0 0 auto;
 }
-/*Responsive*/
 @media (max-width: 1023px) {
   .dashboard-banner {
     min-height: 250px;
@@ -443,18 +419,14 @@
 
   .dashboard-banner-content {
     max-width: 100%;
-
     margin-right: 0;
   }
-
   .dashboard-banner-title {
     font-size: 22px;
   }
-
   .dashboard-banner-subtitle {
     font-size: 12px;
   }
-
   .dashboard-banner-illustration {
     left: 50%;
 
@@ -466,7 +438,6 @@
 
     max-height: 180px;
   }
-
   .dashboard-banner-actions {
     flex-wrap: wrap;
   }

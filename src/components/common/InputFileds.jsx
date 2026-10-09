@@ -13,6 +13,8 @@ function InputFileds({
   setPassword,
   disabled = false,
 }) {
+  const isEmptyDate = type === "date" && !value;
+
   return (
     <>
       <div className="form-group animate-element delay-300">
@@ -20,7 +22,8 @@ function InputFileds({
         <div
           className={`glass-input-wrapper ${error ? "has-error" : ""} ${
             disabled ? "is-disabled" : ""
-          }`}
+          } ${isEmptyDate ? "date-empty" : ""}`}
+          data-placeholder={type === "date" ? placeholder : undefined}
         >
           {icon}
           <input

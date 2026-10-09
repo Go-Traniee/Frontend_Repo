@@ -22,7 +22,6 @@ import logo from "../assets/logo.svg";
 import {
   UNIVERSITIES,
   ACADEMIC_MAJORS,
-  SPECIFIC_MAJOR,
   getGraduationYears,
 } from "../constants/academicOptions";
 
@@ -54,7 +53,6 @@ function StudentProfile() {
     name: "",
     university: "",
     academic_major: "",
-    specialization: "",
     graduation_year: "",
     phone: "",
     phone_code: "+970",
@@ -68,13 +66,13 @@ function StudentProfile() {
       try {
         const data = await getStudentProfile();
         const { phone_code, phone } = splitPhone(data.phone);
+
         setFormData((prev) => ({
           ...prev,
           email: data.email || "",
           name: data.name || "",
           university: data.university || "",
           academic_major: data.academic_major || "",
-          specialization: data.specialization || "",
           graduation_year: data.graduation_year || "",
           phone_code,
           phone,
@@ -144,15 +142,13 @@ function StudentProfile() {
     const newErrors = {};
 
     if (!formData.university) newErrors.university = "الجامعة/الكلية مطلوبة";
-    else if (!formData.academic_major)
+    if (!formData.academic_major)
       newErrors.academic_major = "التخصص الجامعي مطلوب";
-    else if (!formData.specialization)
-      newErrors.specialization = "التخصص المهاري مطلوب";
-    else if (!formData.graduation_year)
-      newErrors.graduation_year = "سنة التخرج مطلوبة";
-    else if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
+
+    if (formData.phone && !/^\d{7,9}$/.test(formData.phone)) {
       newErrors.phone = "رقم الهاتف غير صحيح";
-    } else if (selectedSkills.length === 0) {
+    }
+    if (selectedSkills.length === 0) {
       newErrors.skills = "الرجاء إضافة مهارة واحدة على الأقل";
     }
 
@@ -167,9 +163,10 @@ function StudentProfile() {
         name: formData.name,
         university: formData.university,
         academic_major: formData.academic_major,
-        specialization: formData.specialization,
         graduation_year: formData.graduation_year,
-        phone: formData.phone ? `${formData.phone_code}${formData.phone}` : "",
+        phone: formData.phone
+          ? `${formData.phone_code}${formData.phone}`
+          : "",
       });
 
       await Promise.all(
@@ -265,29 +262,16 @@ function StudentProfile() {
                     placeholder="اختر جامعتك أو كليتك"
                   />
 
-                  <div className="major">
-                    {" "}
-                    <SelectField
-                      label="التخصص الجامعي"
-                      icon={<FaGraduationCap className="input-icon" />}
-                      name="academic_major"
-                      value={formData.academic_major}
-                      onChange={handleChange}
-                      options={ACADEMIC_MAJORS}
-                      error={errorMsg.academic_major}
-                      placeholder="اختر تخصصك الجامعي"
-                    />
-                    <SelectField
-                      label="التخصص الفرعي"
-                      icon={<FaGraduationCap className="input-icon" />}
-                      name="specialization"
-                      value={formData.specialization}
-                      onChange={handleChange}
-                      options={SPECIFIC_MAJOR}
-                      error={errorMsg.specialization}
-                      placeholder="اختر التخصص الذي تتقنه"
-                    />
-                  </div>
+                  <SelectField
+                    label="التخصص الجامعي"
+                    icon={<FaGraduationCap className="input-icon" />}
+                    name="academic_major"
+                    value={formData.academic_major}
+                    onChange={handleChange}
+                    options={ACADEMIC_MAJORS}
+                    error={errorMsg.academic_major}
+                    placeholder="اختر تخصصك الجامعي"
+                  />
 
                   <SelectField
                     label="سنة التخرج / المتوقعة"

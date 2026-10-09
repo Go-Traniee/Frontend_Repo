@@ -27,11 +27,16 @@ function SelectField({
             disabled={disabled}
           >
             <option value="">{placeholder}</option>
-            {options.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
+            {options.map((opt) => {
+              const optValue = typeof opt === "object" ? opt.value : opt;
+              const optLabel = typeof opt === "object" ? opt.label : opt;
+
+              return (
+                <option key={optValue} value={optValue}>
+                  {optLabel}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>

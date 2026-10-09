@@ -70,8 +70,9 @@ export const register = async (formData) => {
     throw error;
   }
 };
+
 /**
- * دالة تسجيل الخروج 
+ * دالة تسجيل الخروج وإلغاء الجلسة من السيرفر، وتنظيف بيانات المستخدم محليًا
  * @returns {Promise<Object>}
  */
 export const logout = async () => {
@@ -97,5 +98,70 @@ export const logout = async () => {
   } finally {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('auth_user');
+  }
+};
+
+/**
+ * دالة إرسال توكن جوجل (credential) للباك اند.
+ * ممكن يرجع status: "authenticated" (دخول مباشر) أو "onboarding_required" (أول مرة).
+ * @param {string} googleToken
+ * @returns {Promise<Object>}
+ */
+export const loginWithGoogle = async (googleToken) => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/google`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({ google_token: googleToken }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to authenticate with Google.');
+    }
+
+    if (data.status === 'authenticated') {
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('auth_user', JSON.stringify(data.user));
+    }
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+/**
+ * دالة إكمال بيانات حساب جوجل الجديد (أول مرة)  + البيانات الإضافية
+ * @param {Object} onboardingData
+ * @returns {Promise<Object>}
+ */
+export const completeGoogleOnboarding = async (onboardingData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/google/onboarding`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(onboardingData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to complete onboarding.');
+    }
+
+    localStorage.setItem('auth_token', data.token);
+    localStorage.setItem('auth_user', JSON.stringify(data.user));
+
+    return data;
+  } catch (error) {
+    throw error;
   }
 };

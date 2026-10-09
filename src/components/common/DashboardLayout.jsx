@@ -109,6 +109,11 @@ function DashboardLayout() {
     ? userName.trim().charAt(0)
     : "";
 
+  const isProfilePage =
+    location.pathname.startsWith("/student/profile") ||
+    location.pathname.startsWith("/student/skills") ||
+    location.pathname.startsWith("/student/assessment");
+
   const handleLogout = async () => {
     try {
       await logout();
@@ -118,36 +123,21 @@ function DashboardLayout() {
       navigate("/login");
     }
   };
-
   return (
     <div className="app-layout">
-
-      {/* ================= SIDEBAR ================= */}
-
       <aside className="app-sidebar">
 
-        {/* Logo */}
-
         <div className="sidebar-logo">
-
-          <div className="sidebar-logo-mark">
-            <span>GT</span>
-          </div>
 
           <div className="sidebar-logo-text">
             <span className="brand-go">Go</span>
             <span className="brand-trainee">Trainee</span>
           </div>
-
         </div>
-
-        {/* Section title */}
 
         <p className="sidebar-section-label">
           القائمة الرئيسية
         </p>
-
-        {/* Navigation */}
 
         <nav className="sidebar-nav">
 
@@ -155,11 +145,14 @@ function DashboardLayout() {
             <NavLink
               key={item.to}
               to={item.to}
-              className={({ isActive }) =>
-                `sidebar-link ${
-                  isActive ? "sidebar-link-active" : ""
-                }`
-              }
+              className={({ isActive }) => {
+                const active =
+                  isActive ||
+                  (item.to === "/student/skills" &&
+                    location.pathname.startsWith("/student/assessment"));
+
+                return `sidebar-link ${active ? "sidebar-link-active" : ""}`;
+              }}
             >
               <span className="sidebar-link-icon">
                 {item.icon}
@@ -172,9 +165,6 @@ function DashboardLayout() {
           ))}
 
         </nav>
-
-        {/* Logout */}
-
         <button
           className="sidebar-logout"
           onClick={handleLogout}
@@ -185,33 +175,26 @@ function DashboardLayout() {
         </button>
 
       </aside>
-
-      {/* ================= MAIN ================= */}
-
       <div className="app-main">
-
-        {/* Topbar */}
 
         <header className="app-topbar">
 
-          {/* Search */}
+          {isProfilePage ? (
+            <div style={{ flex: 1 }} />
+          ) : (
+            <div className="topbar-search">
+              <input
+                type="text"
+                value={searchValue}
+                onChange={(e) =>
+                  setSearchValue(e.target.value)
+                }
+                placeholder="ابحث عن الدورات، التدريبات، المشرفين..."
+              />
 
-          <div className="topbar-search">
-
-            <input
-              type="text"
-              value={searchValue}
-              onChange={(e) =>
-                setSearchValue(e.target.value)
-              }
-              placeholder="ابحث عن الدورات، التدريبات، المشرفين..."
-            />
-
-            <FaSearch className="topbar-search-icon" />
-
-          </div>
-
-          {/* Notification */}
+              <FaSearch className="topbar-search-icon" />
+            </div>
+          )}
 
           <button
             className="topbar-bell"
@@ -219,8 +202,6 @@ function DashboardLayout() {
           >
             <FaBell />
           </button>
-
-          {/* User */}
 
           <div className="topbar-user">
 
@@ -235,9 +216,6 @@ function DashboardLayout() {
           </div>
 
         </header>
-
-        {/* Page */}
-
         <main className="app-content">
           <Outlet />
         </main>

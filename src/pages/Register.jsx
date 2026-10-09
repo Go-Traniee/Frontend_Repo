@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { loginWithGoogle, register } from "../services/authService";
+import GoogleAuthButton from "../components/common/GoogleAuthButton";
+import { Link, useNavigate } from "react-router-dom";
 import HeroAuthForm from "../components/common/HeroAuthForm";
 import "../AuthForm.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { CiLock, CiUser } from "react-icons/ci";
 import { FaRegBuilding } from "react-icons/fa";
 import InputFileds from "../components/common/InputFileds";
-import { register } from "../services/authService";
 
 function Register() {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ function Register() {
       id: 2,
       label: "البريد الإلكتروني",
       name: "email",
-      placeholder: "student@example.com",
+      placeholder: "info@yourcompany.com",
       type: "email",
       icon: <MdOutlineMail className="input-icon" />,
       value: formData.email,
@@ -164,6 +164,10 @@ function Register() {
     if (formData.password !== formData.password_confirmation) {
       newErrors.password_confirmation = "كلمة المرور لا تطابق";
     }
+    if (!formData.rememberMe) {
+      newErrors.rememberMe =
+        "يجب الموافقة على شروط الاستخدام وسياسة الخصوصية للمتابعة";
+    }
 
     setErrorMsg(newErrors);
     if (Object.keys(newErrors).length > 0) return;
@@ -177,8 +181,37 @@ function Register() {
       const result = await register(payload);
       console.log(result);
       navigate(
-        selectedRole === "student" ? "/student/profile" : "/organization/profile"
+        selectedRole === "student"
+          ? "/student/profile/setup"
+          : "/organization/profile"
       );
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleCredential = async (idToken) => {
+    setLoading(true);
+    try {
+      const result = await loginWithGoogle(idToken);
+
+      if (result.status === "authenticated") {
+        navigate(
+          result.user.role === "student"
+            ? "/student/profile"
+            : "/organization/profile",
+        );
+      } else if (result.status === "onboarding_required") {
+        navigate("/auth/google/onboarding", {
+          state: {
+            onboarding_token: result.onboarding_token,
+            google_account: result.google_account,
+            preferredRole: selectedRole === "orga" ? "organization" : "student",
+          },
+        });
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -188,9 +221,9 @@ function Register() {
 
   return (
     <>
-    <div className="background-image"></div>
+      <div className="background-image"></div>
       <main className="signin-page">
-       <HeroAuthForm isStudent={selectedRole} mirrored={true} />
+        <HeroAuthForm isStudent={selectedRole} mirrored={true} />
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
@@ -273,6 +306,9 @@ function Register() {
                     </span>
                   </label>
                 </div>
+                {errorMsg.rememberMe && (
+                  <span className="error-message">{errorMsg.rememberMe}</span>
+                )}
 
                 <button
                   className="signin-button animate-element delay-600"
@@ -283,19 +319,21 @@ function Register() {
                 </button>
               </form>
 
-              <button
-                id="googleSignIn"
-                className="google-button animate-element delay-800"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48">
-                  <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917" />
-                  <path fill="#FF3D00" d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691" />
-                  <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.9 11.9 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44" />
-                  <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917" />
-                </svg>
-                <span>المتابعة بواسطة حساب جوجل</span>
-              </button>
+              <GoogleAuthButton onCredential={handleGoogleCredential} disabled={loading}>
+                <button
+                  id="googleSignIn"
+                  className="google-button animate-element delay-800"
+                  type="button"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48">
+                    <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917" />
+                    <path fill="#FF3D00" d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691" />
+                    <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.9 11.9 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44" />
+                    <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917" />
+                  </svg>
+                  <span>المتابعة بواسطة حساب جوجل</span>
+                </button>
+              </GoogleAuthButton>
 
               <p className="create-account animate-element delay-900">
                 لديك حساب بالفعل؟{" "}

@@ -14,6 +14,7 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 
+import HeroAuthForm from "../components/common/HeroAuthForm";
 import InputFileds from "../components/common/InputFileds";
 import TextareaField from "../components/common/TextareaField";
 import StepIndicator from "../components/common/StepIndicator";
@@ -60,9 +61,8 @@ function OrganizationProfile() {
           location: data.location || "",
           website: data.website || "",
           contact_person: data.contact_person || "",
-        }));
-      } catch (error) {
-        console.log("بيانات وهمية", error);
+        }));      } catch (error) {
+        console.log("الباك ما بيوفر GET لبروفايل المؤسسة حاليًا", error);
 
         try {
           const storedUser = JSON.parse(localStorage.getItem("auth_user"));
@@ -71,12 +71,15 @@ function OrganizationProfile() {
             setFormData((prev) => ({
               ...prev,
               email: storedUser.email || "",
+              organization_name: storedUser.name || "",
             }));
           }
         } catch (innerError) {
           console.log(innerError);
         }
       }
+     
+
     };
 
     fetchProfile();
@@ -152,7 +155,9 @@ function OrganizationProfile() {
     <>
       <div className="background-image"></div>
 
-      <main className="signin-page no-hero">
+      <main className="signin-page">
+        <HeroAuthForm isOrganizationProfile={true} currentStep={currentStep} />
+
         <section className="signin-section">
           <div className="signin-container">
             <div className="signin-content">
