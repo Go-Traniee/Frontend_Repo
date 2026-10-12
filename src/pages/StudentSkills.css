@@ -1,5 +1,3 @@
-/* ================= STATS ================= */
-
 .skills-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -95,6 +93,9 @@
   font-weight: 600;
   color: #ef4444;
 }
+
+/* ================= ADD SKILL MODAL ================= */
+
 .skills-modal-overlay {
   position: fixed;
   inset: 0;

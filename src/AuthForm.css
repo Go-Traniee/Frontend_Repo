@@ -441,10 +441,6 @@ option {
   height: 20px;
   flex: 0 0 auto;
 }
-
-/* ================================
-   Create Account
-================================ */
 .create-account {
   margin: 16px 0 0;
   color: var(--muted-foreground);
@@ -452,10 +448,6 @@ option {
   text-align: center;
   width: 100%;
 }
-
-/* ================================
-   Hero
-================================ */
 .hero-section {
   flex: 1;
   min-width: 0;
@@ -663,9 +655,6 @@ option {
   animation-delay: 1400ms;
 }
 
-/* ================================
-   Responsive
-================================ */
 @media (max-width: 767px) {
   .signin-page {
     display: block;
@@ -682,10 +671,6 @@ option {
 
   .signin-container {
     max-width: 520px;
-  }
-
-  .signin-content {
-    gap: 8px;
   }
 }
 
@@ -708,18 +693,6 @@ option {
     width: 220px;
     flex-basis: 220px;
     padding: 16px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .testimonial-card:nth-child(n + 2) {
-    display: flex;
-  }
-}
-
-@media (min-width: 1536px) {
-  .testimonial-card:nth-child(n + 3) {
-    display: flex;
   }
 }
 
@@ -896,8 +869,6 @@ body:has(.profile-logo) {
   overflow: visible;
   direction: ltr;
 }
-
-/* الصفحة نفسها */
 .signin-page:has(.profile-logo) {
   width: 100%;
   max-width: none;
@@ -950,8 +921,6 @@ body:has(.profile-logo) {
 }
 /*LOGO*/
 .signin-page:has(.profile-logo) .profile-logo {
-  display: block;
-
   width: 76px;
   height: auto;
   margin: 0 auto 34px;
@@ -967,7 +936,6 @@ body:has(.profile-logo) {
   gap: 10px;
   margin: 0 0 28px;
 }
-/* الدائرة */
 .signin-page:has(.profile-logo) .step-circle {
   width: 20px;
   height: 20px;
@@ -1001,34 +969,16 @@ body:has(.profile-logo) {
 .signin-page:has(.profile-logo) .step-connector.step-connector-done {
   background: #10b981;
 }
-/* 
-   PROFILE TITLE
- */
 .signin-page:has(.profile-logo) .profile-step-title {
   width: 100%;
 
   margin: 0 0 25px;
 
   font-family: "Cairo", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-  letter-spacing: -0.75px;
-
-  text-align: right;
   vertical-align: middle;
-
-  color: #0f172a;
 }
 .signin-page:has(.profile-logo) .profile-step-title span {
-  font-family: "Cairo", sans-serif;
   font-weight: 400;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-  letter-spacing: -0.75px;
-  text-align: right;
   vertical-align: middle;
 }
 /*FORM*/
@@ -1059,9 +1009,6 @@ body:has(.profile-logo) {
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
-}
-.signin-page:has(.profile-logo) .glass-input-wrapper.is-disabled {
-  border-color: #e2e8f0;
 }
 /* input */
 .signin-page:has(.profile-logo) .glass-input-wrapper input {
@@ -1212,15 +1159,6 @@ body:has(.profile-logo) {
   animation-name: slideLeftIn;
 }
 
-.signin-page:has(.profile-logo) .hero-image.company-profile-image-step2 {
-  background-position: center 25%;
-}
-.signin-page:has(.profile-logo) .hero-image.company-profile-image,
-.signin-page:has(.profile-logo) .hero-image.company-profile-image-step2 {
-  background-position: center 22%;
-  background-size: 120%;
-}
-
 
 /* الخلفية */
 body:has(.profile-logo) .background-image {
@@ -1248,9 +1186,6 @@ body:has(.profile-logo) .background-image {
     filter: blur(0);
     transform: translateX(0);
   }
-}
-.signin-page:has(.profile-logo) .skills-field {
-  position: relative;
 }
 .signin-page:has(.profile-logo) .skills-wrapper {
   min-height: 42px;
@@ -1456,8 +1391,6 @@ body:has(.profile-logo) .background-image {
   position: relative;
   z-index: 1;
 }
-
-/* الموجات والأشكال الصغيرة */
 .matching-waves {
   --u: calc(100vw / 1512);
   position: absolute;
@@ -1771,4 +1704,125 @@ body:has(.profile-logo) .background-image {
 }
 .signin-page:has(.role-toggle-container) .google-auth-wrapper {
   margin-top: 12px;
+}
+.signin-page:has(.company-profile-image, .company-profile-image-step2) {
+  --co-page-gap: 28px;
+  --co-image-height: 280px;
+  --co-image-top: 150px;
+
+  margin: var(--co-page-gap) 0;
+  min-height: calc(100vh - (var(--co-page-gap) * 2));
+  min-height: calc(100dvh - (var(--co-page-gap) * 2));
+}
+
+.signin-page:has(.company-profile-image, .company-profile-image-step2)
+  .signin-section {
+  padding-top: 16px;
+}
+
+.signin-page:has(.company-profile-image, .company-profile-image-step2)
+  .profile-step-title {
+  text-align: center;
+}
+
+.signin-page:has(.company-profile-image, .company-profile-image-step2)
+  .hero-section {
+  align-items: flex-start;
+}
+
+.signin-page:has(.company-profile-image, .company-profile-image-step2)
+  .hero-image.company-profile-image,
+.signin-page:has(.company-profile-image, .company-profile-image-step2)
+  .hero-image.company-profile-image-step2 {
+  height: var(--co-image-height);
+  margin-top: var(--co-image-top);
+  background-size: contain;
+  background-position: center;
+}
+.signin-page:has(#organizationProfileStep1) {
+  --co-image-top: 0px;
+}
+
+.signin-page:has(#organizationProfileStep1) .signin-section {
+  align-items: center;
+  padding-top: 32px;
+}
+.signin-page:has(#organizationProfileStep1) .hero-section {
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) {
+    --co-page-gap: 24px;
+    --co-image-top: 110px;
+    --co-image-height: 320px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .profile-logo {
+    width: 84px;
+    margin-bottom: 22px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .step-indicator {
+    margin-bottom: 20px;
+  }
+
+  /* العنوان */
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .profile-step-title,
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .profile-step-title span {
+    font-size: 26px;
+    line-height: 36px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .profile-step-title {
+    margin-bottom: 20px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .signin-form {
+    gap: 14px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .form-group label {
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper {
+    height: 42px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper input {
+    height: 40px;
+    font-size: 13px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .select-field-wrapper select {
+    height: 40px;
+    font-size: 13px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .skills-wrapper {
+    min-height: 42px;
+    padding-block: 5px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper.textarea-wrapper {
+    min-height: 88px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper textarea {
+    min-height: 82px;
+    font-size: 12px;
+    resize: none;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper input::placeholder,
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .glass-input-wrapper textarea::placeholder {
+    font-size: 12px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .form-step-actions {
+    margin-top: 8px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .next-button,
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .prev-button {
+    height: 44px;
+    min-width: 200px;
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) and (max-height: 800px) {
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .profile-logo {
+    width: 72px;
+    margin-bottom: 16px;
+  }
+  .signin-page:has(.company-profile-image-step2):not(:has(#organizationProfileStep1)) .signin-form {
+    gap: 12px;
+  }
 }

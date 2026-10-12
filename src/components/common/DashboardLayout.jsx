@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import {
+  Link,
   NavLink,
   Outlet,
   useLocation,
@@ -16,6 +17,8 @@ import {
   FaCog,
   FaSignOutAlt,
   FaBell,
+  FaRegFolderOpen,
+  FaPlus,
 } from "react-icons/fa";
 
 import { getStudentProfile } from "../../services/studentService";
@@ -56,6 +59,29 @@ const NAV_ITEMS = [
   },
 ];
 
+const ORGANIZATION_NAV_ITEMS = [
+  {
+    label: "لوحة التحكم",
+    icon: <FaTh />,
+    to: "/dashboard",
+  },
+  {
+    label: "طلباتي",
+    icon: <FaRegFolderOpen />,
+    to: "/organization/requests",
+  },
+  {
+    label: "الملف التعريفي",
+    icon: <FaRegUser />,
+    to: "/organization/profile",
+  },
+  {
+    label: "الإعدادات",
+    icon: <FaCog />,
+    to: "/settings",
+  },
+];
+
 function getCurrentUser() {
   try {
     return JSON.parse(localStorage.getItem("auth_user"));
@@ -68,6 +94,8 @@ function DashboardLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isOrganization = getCurrentUser()?.role === "organization";
+  const navItems = isOrganization ? ORGANIZATION_NAV_ITEMS : NAV_ITEMS;
 
   const [userName, setUserName] = useState(
     getCurrentUser()?.name || ""
@@ -79,6 +107,8 @@ function DashboardLayout() {
 
   useEffect(() => {
     const syncProfile = async () => {
+      if (getCurrentUser()?.role === "organization") return;
+
       try {
         const profile = await getStudentProfile();
 
@@ -133,13 +163,24 @@ function DashboardLayout() {
           </div>
         </div>
 
+        {isOrganization && (
+          <Link
+            to="/organization/requests/new"
+            className="sidebar-new-project"
+          >
+            <FaPlus />
+
+            <span>مشروع جديد</span>
+          </Link>
+        )}
+
         <p className="sidebar-section-label">
           القائمة الرئيسية
         </p>
 
         <nav className="sidebar-nav">
 
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
@@ -183,6 +224,14 @@ function DashboardLayout() {
             aria-label="الإشعارات"
           >
             <FaBell />
+          </button>
+
+          <button
+            type="button"
+            className="topbar-language"
+            aria-label="اللغة"
+          >
+            العربية
           </button>
 
           <div className="topbar-user">

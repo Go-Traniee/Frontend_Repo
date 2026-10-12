@@ -289,7 +289,7 @@ function StudentProfileView() {
 
                 <div className="profile-skill-list">
                   {skills.map((item) => {
-                    const level = SKILL_LEVELS[item.proficiency];
+                    const level = SKILL_LEVELS[item.assessed_level];
 
                     return (
                       <div className="profile-skill-row" key={item.id}>

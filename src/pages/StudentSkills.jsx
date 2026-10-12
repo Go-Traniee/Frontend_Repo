@@ -42,7 +42,7 @@ import welcomeImg from "../assets/welcome.svg";
 import "./Dashboard.css";
 import "./StudentSkills.css";
 
-const PROFICIENCY_OPTIONS = [
+const LEVEL_OPTIONS = [
   { value: "beginner", label: "مبتدئ", dots: 1 },
   { value: "intermediate", label: "متوسط", dots: 2 },
   { value: "advanced", label: "متقدم", dots: 3 },
@@ -135,7 +135,7 @@ function StudentSkills() {
   const suggestedSkills = availableToAdd.slice(0, 6);
 
   const advancedCount = studentSkills.filter(
-    (s) => s.proficiency === "advanced" || s.proficiency === "expert",
+    (s) => s.assessed_level === "advanced" || s.assessed_level === "expert",
   ).length;
 
   const closeModal = () => {
@@ -194,8 +194,8 @@ function StudentSkills() {
           <h1 className="dashboard-banner-title">مهاراتي</h1>
 
           <p className="dashboard-banner-subtitle">
-            أضف مهاراتك وحدد مستوى اتقانك لتساعدنا على تقديم الفرص والمشاريع
-            المناسبة لك
+            أضف مهاراتك وقدّم اختبار المهارات ليتم تقييم مستواك بالذكاء
+            الاصطناعي ونقدّم لك الفرص والمشاريع المناسبة
           </p>
 
           <div className="dashboard-banner-actions">
@@ -300,8 +300,8 @@ function StudentSkills() {
         ) : (
           <div className="skills-list">
             {studentSkills.map((item) => {
-              const level = PROFICIENCY_OPTIONS.find(
-                (opt) => opt.value === item.proficiency,
+              const level = LEVEL_OPTIONS.find(
+                (opt) => opt.value === item.assessed_level,
               );
               const SkillIcon = getSkillIcon(item.skill?.name);
 
@@ -315,19 +315,23 @@ function StudentSkills() {
                     <span className="skills-row-name">{item.skill?.name}</span>
                   </div>
 
-                  <span className="skills-row-level">
-                    <span className="skills-row-dots">
-                      {[1, 2, 3, 4].map((n) => (
-                        <span
-                          key={n}
-                          className={`skills-row-dot ${
-                            n <= (level?.dots || 0) ? "skills-row-dot-on" : ""
-                          }`}
-                        />
-                      ))}
+                  {level ? (
+                    <span className="skills-row-level">
+                      <span className="skills-row-dots">
+                        {[1, 2, 3, 4].map((n) => (
+                          <span
+                            key={n}
+                            className={`skills-row-dot ${
+                              n <= level.dots ? "skills-row-dot-on" : ""
+                            }`}
+                          />
+                        ))}
+                      </span>
+                      {level.label}
                     </span>
-                    {level?.label || item.proficiency}
-                  </span>
+                  ) : (
+                    <span className="skills-row-level">بانتظار التقييم</span>
+                  )}
 
                   <button
                     type="button"

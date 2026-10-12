@@ -72,7 +72,7 @@ export const register = async (formData) => {
 };
 
 /**
- * دالة تسجيل الخروج وإلغاء الجلسة من السيرفر، وتنظيف بيانات المستخدم محليًا
+ * دالة تسجيل الخروج وإلغاء الجلسة من السيرفر
  * @returns {Promise<Object>}
  */
 export const logout = async () => {
@@ -102,8 +102,6 @@ export const logout = async () => {
 };
 
 /**
- * دالة إرسال توكن جوجل (credential) للباك اند.
- * ممكن يرجع status: "authenticated" (دخول مباشر) أو "onboarding_required" (أول مرة).
  * @param {string} googleToken
  * @returns {Promise<Object>}
  */

@@ -7,18 +7,10 @@ import {
   deleteStudentSkill,
 } from "../../services/studentService";
 
-const PROFICIENCY_OPTIONS = [
-  { value: "beginner", label: "مبتدئ" },
-  { value: "intermediate", label: "متوسط" },
-  { value: "advanced", label: "متقدم" },
-  { value: "expert", label: "خبير" },
-];
-
 function SkillsManageSection() {
   const [allSkills, setAllSkills] = useState([]);
   const [studentSkills, setStudentSkills] = useState([]);
   const [selectedSkillId, setSelectedSkillId] = useState("");
-  const [selectedProficiency, setSelectedProficiency] = useState("beginner");
 
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
@@ -59,12 +51,11 @@ function SkillsManageSection() {
     try {
       const newSkill = await addStudentSkill({
         skill_id: Number(selectedSkillId),
-        proficiency: selectedProficiency,
+        proficiency: "beginner",
       });
 
       setStudentSkills((prev) => [...prev, newSkill]);
       setSelectedSkillId("");
-      setSelectedProficiency("beginner");
     } catch (error) {
       setErrorMsg(error.message || "تعذر إضافة المهارة، حاول مرة أخرى.");
     } finally {
@@ -120,18 +111,6 @@ function SkillsManageSection() {
           {availableToAdd.map((skill) => (
             <option key={skill.id} value={skill.id}>
               {skill.name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={selectedProficiency}
-          onChange={(e) => setSelectedProficiency(e.target.value)}
-          className="skills-manage-select"
-        >
-          {PROFICIENCY_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
             </option>
           ))}
         </select>

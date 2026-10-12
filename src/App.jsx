@@ -6,12 +6,15 @@ import StudentProfileView from "./pages/StudentProfileView";
 import StudentProfileEdit from "./pages/StudentProfileEdit";
 import OrganizationProfile from "./pages/OrganizationProfile";
 import MatchingLoading from "./pages/MatchingLoading";
-import Dashboard from "./pages/Dashboard";
+import DashboardHome from "./pages/DashboardHome";
 import PublicLayout from "./components/common/PublicLayout";
 import DashboardLayout from "./components/common/DashboardLayout";
 import GoogleOnboarding from "./pages/GoogleOnboarding";
 import StudentSkills from "./pages/StudentSkills";
 import StudentAssessment from "./pages/StudentAssessment";
+import OrganizationRequestIntro from "./pages/OrganizationRequestIntro";
+import OrganizationRequestProblem from "./pages/OrganizationRequestProblem";
+import OrganizationRequestQuestions from "./pages/OrganizationRequestQuestions";
 
 function App() {
   return (
@@ -29,11 +32,23 @@ function App() {
       </Route>
 
       <Route element={<DashboardLayout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<DashboardHome />} />
         <Route path="/student/profile" element={<StudentProfileView />} />
         <Route path="/student/profile/edit" element={<StudentProfileEdit />} />
         <Route path="/student/skills" element={<StudentSkills />} />
         <Route path="/student/assessment" element={<StudentAssessment />} />
+        <Route
+          path="/organization/requests/new"
+          element={<OrganizationRequestIntro />}
+        />
+        <Route
+          path="/organization/requests/describe"
+          element={<OrganizationRequestProblem />}
+        />
+        <Route
+          path="/organization/requests/:id/questions"
+          element={<OrganizationRequestQuestions />}
+        />
       </Route>
       <Route path="/organization/matching" element={<MatchingLoading />} />
     </Routes>

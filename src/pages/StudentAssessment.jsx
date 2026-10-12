@@ -10,7 +10,7 @@ import {
   FaRegFlag,
   FaTimes,
   FaRegClock,
-  FaListOl,
+  FaRegFileAlt,
 } from "react-icons/fa";
 
 import {
@@ -39,9 +39,10 @@ const INTRO_TEXT = {
   title: "اختبار المهارات",
   noticeTitle:
     "تنبيه هام: الاختبار يشمل جميع المهارات المسجلة و المضافة حديثاً.",
-  noticeDetails: "لقد تم تخصيص هذا الاختبار بناء على مهاراتك المسجلة في ملفك الشخصي لضمان أعلى نسب الموافقة الوظيفية والتدريبيةوترشيحك المباشر لفرص التدريب التعاوني مع الشركات",
+  noticeDetails:
+    "لقد تم تخصيص هذا الاختبار بناءً على مهاراتك المسجلة في ملفك الشخصي، لضمان أعلى نسب الموائمة الوظيفية و التدريبية و ترشيحك المباشر لفرص التدريب التعاوني مع الشركات.",
   agree:
-    "أؤكد أني قرأت وفهمت وأوافق على كافة قواعد الاختبار ومعايير ميثاق الشرف الأكاديمي.",
+    "أؤكد أنني قرأت وفهمت وأوافق على كافة قواعد الاختبار ومعايير ميثاق الشرف الأكاديمي.",
   startButton: "ابدأ الاختبار الآن",
 };
 
@@ -225,15 +226,19 @@ function StudentAssessment() {
           </div>
 
           <div className="assessment-intro-banner">
-            <h3 className="assessment-intro-banner-title">
-              {INTRO_TEXT.noticeTitle}
-            </h3>
+            <div className="assessment-intro-banner-image" aria-hidden="true" />
 
-            {INTRO_TEXT.noticeDetails && (
-              <p className="assessment-intro-banner-text">
-                {INTRO_TEXT.noticeDetails}
-              </p>
-            )}
+            <div className="assessment-intro-banner-content">
+              <h3 className="assessment-intro-banner-title">
+                {INTRO_TEXT.noticeTitle}
+              </h3>
+
+              {INTRO_TEXT.noticeDetails && (
+                <p className="assessment-intro-banner-text">
+                  {INTRO_TEXT.noticeDetails}
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="assessment-intro-stats">
@@ -256,33 +261,33 @@ function StudentAssessment() {
 
             <div className="assessment-intro-stat">
               <span className="assessment-intro-stat-icon">
-                <FaListOl />
+                <FaRegFileAlt />
               </span>
 
               <div className="assessment-intro-stat-text">
                 <span className="assessment-intro-stat-label">
-                  عدد الأسئلة
+                  أسئلة الاختيار
                 </span>
                 <span className="assessment-intro-stat-value">
-                  {total} سؤال
+                  {total} سؤالاً
                 </span>
               </div>
             </div>
           </div>
 
-          <label className="assessment-intro-agree">
-            <input
-              type="checkbox"
-              checked={agreed}
-              onChange={(e) => setAgreed(e.target.checked)}
-            />
-            <span>{INTRO_TEXT.agree}</span>
-          </label>
+          <div className="assessment-intro-bottom">
+            <label className="assessment-intro-agree">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+              />
+              <span>{INTRO_TEXT.agree}</span>
+            </label>
 
-          <div className="assessment-intro-footer">
             <button
               type="button"
-              className="assessment-btn assessment-btn-primary"
+              className="assessment-btn assessment-btn-primary assessment-intro-start"
               disabled={!agreed}
               onClick={() => setStarted(true)}
             >

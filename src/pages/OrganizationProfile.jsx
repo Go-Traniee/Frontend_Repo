@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { CiLock } from "react-icons/ci";
 import {
   FaRegBuilding,
-  FaIndustry,
   FaMapMarkerAlt,
   FaGlobe,
   FaUserTie,
@@ -226,7 +225,6 @@ function OrganizationProfile() {
 
                   <InputFileds
                     label={"مجالات الشركة"}
-                    icon={<FaIndustry className="input-icon" />}
                     type={"text"}
                     placeholder={"مثال: تكنولوجيا المعلومات"}
                     name={"industry"}
